@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="div">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a
+          class="navbar-brand"
+          mat-raised-button
+          color="warn"
+          routerLink="/home"
+        >
+          <mat-icon>home</mat-icon>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a
+              mat-button
+              color="warn"
+              routerLink="pharmacy"
+              routerLinkActive="active"
+              >Pharmacy</a
+            >
+            <a
+              mat-button
+              color="warn"
+              routerLink="unit"
+              routerLinkActive="active"
+              >Unit</a
+            >
+            <a
+              mat-button
+              co
+              lor="warn"
+              routerLink="unitConversion"
+              routerLinkActive="active"
+              >Unit Conversion</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="main">
+    <router-outlet />
+  </div>
+</div>

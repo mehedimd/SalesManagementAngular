@@ -1,0 +1,59 @@
+
+
+<div>
+    <div style="text-align: center; width: 1050px; height: 50px; margin-top: 100px;margin-bottom: 20px;margin-left: 11.4%;  background-color: rgb(71, 55, 212);opacity: 50px; padding-top: 13px;">
+        @if(isEdit) {
+            <h4 style="font-size: 30px; color: white;"><b><i>Edit Target</i></b></h4>
+            
+        } @else {
+            <h4><b><i>Add Target</i></b></h4>
+        }
+    </div>
+    <form [formGroup]="SalesTargetForm" (ngSubmit)="Save()">
+        <div class="example-container flex justify-center" >
+            
+            @if (isEdit) 
+            {
+                <mat-form-field>
+                    <mat-label>SalesTarget Id</mat-label>
+                    <input matInput type="number" formControlName="SalesTargetId" readonly>
+                </mat-form-field>
+            }@else{
+                <mat-form-field style="display: none;">
+                    <mat-label>SalesTarget Id</mat-label>
+                    <input matInput type="number" formControlName="SalesTargetId" readonly>
+                </mat-form-field>
+            }
+
+
+            <mat-form-field>
+                <mat-label>Target Taka</mat-label>
+                <input matInput type="text" formControlName="TargetTaka">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Closing Date</mat-label>
+                <input matInput type="date" formControlName="ClosingDate">
+            </mat-form-field>
+            
+
+            <mat-form-field>
+                <mat-label>EmployeeId</mat-label>
+                <input matInput type="number" formControlName="EmployeeId">
+            </mat-form-field>
+
+
+            @if(isEdit) {
+                <div>
+                    <button mat-raised-button color="primary" [disabled]="!SalesTargetForm.valid">
+                        <mat-icon>update</mat-icon>Update</button>
+                </div>
+            } @else {
+                <div>
+                    <button mat-raised-button color="primary" [disabled]="!SalesTargetForm.valid"><mat-icon>save</mat-icon>Save</button>
+                </div>
+            }
+        </div>
+    </form>
+</div>
+

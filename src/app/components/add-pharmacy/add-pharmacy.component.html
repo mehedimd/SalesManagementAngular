@@ -1,0 +1,114 @@
+<div class="row d-flex justify-content-center mt-3">
+  <div class="col-md-7 shadow-lg p-3">
+    @if(pharmacy.pharmacyId){
+    <h1 class="text-primary">Edit Pharmacy</h1>
+    } @else{
+    <h1 class="text-primary">Create New Pharmacy</h1>
+    }
+    <div class="row g-2">
+      @if(pharmacy.pharmacyId){
+      <div class="col-md-6">
+        <label for="pharmacyId" class="form-label">Pharmacy ID</label>
+        <input
+          [(ngModel)]="pharmacy.pharmacyId"
+          readonly
+          type="text"
+          class="form-control"
+          id="pharmacyId"
+        />
+      </div>
+      }
+
+      <div class="col-md-6">
+        <label for="name" class="form-label">Pharmacy Name</label>
+        <input
+          [(ngModel)]="pharmacy.pharmacyName"
+          type="text"
+          class="form-control"
+          id="name"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          [(ngModel)]="pharmacy.emailAddress"
+          type="text"
+          class="form-control"
+          id="email"
+          aria-describedby="emailHelp"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input
+          [(ngModel)]="pharmacy.phoneNumber"
+          type="text"
+          class="form-control"
+          id="phone"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="country" class="form-label">Country</label>
+        <input
+          [(ngModel)]="pharmacy.country"
+          type="text"
+          class="form-control"
+          id="country"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="adress" class="form-label">Address</label>
+        <input
+          [(ngModel)]="pharmacy.address"
+          type="text"
+          class="form-control"
+          id="adress"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="city" class="form-label">City</label>
+        <input
+          [(ngModel)]="pharmacy.city"
+          type="text"
+          class="form-control"
+          id="city"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="state" class="form-label">State </label>
+        <input
+          [(ngModel)]="pharmacy.state"
+          type="text"
+          class="form-control"
+          id="state"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="postalcode" class="form-label">PostalCode</label>
+        <input
+          [(ngModel)]="pharmacy.postalCode"
+          type="text"
+          class="form-control"
+          id="postalcode"
+        />
+      </div>
+
+      <div class="col-md-2">
+        @if(pharmacy.pharmacyId){
+        <button (click)="updatePharmacy()" class="btn btn-primary">
+          Update
+        </button>
+        }@else {
+        <button (click)="addPharmacy()" class="btn btn-primary">Submit</button>
+        }
+      </div>
+    </div>
+  </div>
+</div>

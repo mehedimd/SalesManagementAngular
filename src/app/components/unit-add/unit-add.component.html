@@ -1,0 +1,36 @@
+
+<div class="row d-flex justify-content-center mt-2">
+  <div class="col-md-6 shadow-lg p-3">
+    @if(unit.unitId){
+      <h1 class="text-primary display-1">Edit Pharmacy</h1>
+    }  @else{
+      <h1 class="text-primary display-1">Create New Unit</h1>
+    }
+    <div class="row g-3">
+
+      @if(unit.unitId){
+        <div class="col-md-12">
+          <div class="form-floating">
+          <input [(ngModel)] = "unit.unitId" readonly type="text" class="form-control" id="pharmacyId">
+          <label for="pharmacyId" >Unit ID</label>
+          </div>
+        </div>
+        }
+
+      <div class="col-md-12">
+        <div class="form-floating">
+          <input [(ngModel)] = "unit.unitName" type="text" class="form-control" id="name">
+          <label for="name">Unit Name</label>  
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        @if(unit.unitId){
+          <button (click)="updateUnit()" class="btn btn-primary">Update</button>
+      }@else {
+            <button (click)="addUnit()" class="btn btn-primary">Submit</button>    
+      }
+      </div>
+    </div>
+  </div>
+</div>

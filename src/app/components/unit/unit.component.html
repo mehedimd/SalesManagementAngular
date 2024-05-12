@@ -1,0 +1,27 @@
+<div class="row d-flex justify-content-center p-5">  
+  <div class="col-md-6">
+    <button  class="btn btn-primary mb-2" routerLink="/addUnit">Create New Unit</button>
+      <table class="table text-center shadow-lg">
+        <thead>
+          <tr>
+            <th>UnitID</th>
+            <th>UnitName</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of units; track item.unitId) {
+            <tr>
+              <td>{{item.unitId}}</td>
+              <td>{{item.unitName}}</td>
+              <td >
+                <button class="btn btn-secondary" routerLink="/addUnit/{{item.unitId}}">Edit</button>
+                <button class="btn btn-danger ms-2" (click)="Delete(item.unitId)">Delete</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+</div>
+    
