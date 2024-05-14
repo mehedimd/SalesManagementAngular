@@ -16,6 +16,8 @@ import { ListSalesAchievementComponent } from './components/list-sales-achieveme
 import { AddSalesAchievementComponent } from './components/add-sales-achievement/add-sales-achievement.component';
 // end rifat
 import { HomeComponent } from './components/home/home.component';
+import { OrderComponent } from './components/order/order.component';
+import { OrderAddComponent } from './components/order-add/order-add.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,6 +33,8 @@ export const routes: Routes = [
   { path: 'unitConversion', component: UnitConversionComponent },
   { path: 'addUnitConversion', component: AddUnitConversionComponent },
   { path: 'addUnitConversion/:id', component: AddUnitConversionComponent },
+  { path: 'order', component: OrderComponent },
+  { path: 'order/add', component: OrderAddComponent },
 
   // rifat
   {
