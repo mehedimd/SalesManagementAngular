@@ -3,8 +3,6 @@ import { Injectable, inject } from '@angular/core';
 import { IProduct } from '../Models/Products.model';
 import { Observable } from 'rxjs';
 
-
-
 @Injectable({
   providedIn: 'root',
 })
@@ -18,22 +16,17 @@ export class ProductService {
     return this.http.get<IProduct[]>(this.apiUrl);
   }
   createProduct(product: IProduct): Observable<any> {
-    return this.http.post(this.apiUrl, product)
+    return this.http.post(this.apiUrl, product);
   }
   getProduct(ProductId: number) {
-    return this.http.get<IProduct>(this.apiUrl +ProductId
-    );
+    return this.http.get<IProduct>(this.apiUrl + ProductId);
   }
-  
+
   updateProduct(ProductId: number, Product: IProduct) {
-    console.log(Product)
-    return this.http.put<IProduct>(this.apiUrl + ProductId,
-      Product
-    );
+    console.log(Product);
+    return this.http.put<IProduct>(this.apiUrl + ProductId, Product);
   }
   deleteProduct(ProductId: number) {
     return this.http.delete(this.apiUrl + ProductId);
   }
-  
-  
 }

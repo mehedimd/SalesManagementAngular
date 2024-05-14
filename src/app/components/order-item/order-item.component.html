@@ -1,0 +1,52 @@
+<div class="p-4">
+  <h3 class="text-center">💊🩺 Order Medicine 💉🩸</h3>
+  <hr />
+  <div class="row g-2">
+    <div class="form-group col-md-6">
+      <label>Medicine</label>
+      <select class="form-select" (change)="updatePrice($event)">
+        <option value="0">--Select Medecine</option>
+        @for(product of allProducts; track product.productId){
+        <option value="{{ product.productId }}">
+          {{ product.productName }}
+        </option>
+        }
+      </select>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label>Price</label>
+      <input
+        class="form-control"
+        type="text"
+        [(ngModel)]="orderItem.price"
+        readonly
+      />
+    </div>
+
+    <div class="form-group col-md-6">
+      <label>Quantity</label>
+      <input
+        class="form-control"
+        type="number"
+        min="1"
+        [(ngModel)]="orderItem.quantity"
+        (input)="updateTotal()"
+      />
+    </div>
+
+    <div class="form-group col-md-6">
+      <label>Total</label>
+      <input
+        class="form-control"
+        type="text"
+        [(ngModel)]="orderItem.total"
+        readonly
+      />
+    </div>
+    <div class="col-md-12">
+      <button class="btn btn-primary" (click)="addOrderItem()">Save</button>
+      <button class="btn btn-secondary ms-2" [mat-dialog-close]>close</button>
+    </div>
+  </div>
+</div>
