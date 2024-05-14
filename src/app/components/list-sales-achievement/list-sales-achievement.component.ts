@@ -1,8 +1,8 @@
-import { Component, Input, OnInit, inject, input } from '@angular/core';
+import { Component, Input, inject, input } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
-import { TooltipModule } from 'primeng/tooltip';
+
 import { MatIconModule } from '@angular/material/icon';
 import { ToastrService } from 'ngx-toastr';
 import { SalesAchivementService } from '../../services/sales-achivement.service';
@@ -11,11 +11,11 @@ import { ISalesAchivement } from '../../Models/SalesAchievement.model';
 @Component({
   selector: 'app-list-sales-achievement',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule, RouterLink, MatIconModule,TooltipModule],
+  imports: [MatTableModule, MatButtonModule, RouterLink, MatIconModule],
   templateUrl: './list-sales-achievement.component.html',
   styleUrl: './list-sales-achievement.component.css',
 })
-export class ListSalesAchievementComponent implements OnInit{
+export class ListSalesAchievementComponent {
   router = inject(Router);
   toaster = inject(ToastrService);
   // target=inject(SalesTargetServiceService)

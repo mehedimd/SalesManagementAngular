@@ -33,15 +33,42 @@ export const routes: Routes = [
   { path: 'addUnitConversion/:id', component: AddUnitConversionComponent },
 
   // rifat
-  {path: 'List',component: ListOfProductsComponent},
-  {path: 'add-products',component: AddProductsComponent},
-  {path: 'products/:id',component: AddProductsComponent},
-  {path: 'List-of-SalesTarget',component: ListOfSalesTargetsComponent},
-  {path: 'add-salestarget',component: AddSalesTargetsComponent},
-  {path: 'salestargets/:id',component: AddSalesTargetsComponent},
-  {path: 'List-of-SalesAchievement',component: ListSalesAchievementComponent},
-  {path: 'add-SalesAchievement',component: AddSalesAchievementComponent},
-  {path: 'SalesAchievement/:id',component: AddSalesAchievementComponent},
+  {
+    path: 'List',
+    component: ListOfProductsComponent,
+  },
+  {
+    path: 'add-products',
+    component: AddProductsComponent,
+  },
+  {
+    path: 'products/:id',
+    component: AddProductsComponent,
+  },
+  {
+    path: 'List-of-SalesTarget',
+    component: ListOfSalesTargetsComponent,
+  },
+  {
+    path: 'add-salestarget',
+    component: AddSalesTargetsComponent,
+  },
+  {
+    path: 'salestargets/:id',
+    component: AddSalesTargetsComponent,
+  },
+  {
+    path: 'List-of-SalesAchievement',
+    component: ListSalesAchievementComponent,
+  },
+  {
+    path: 'add-SalesAchievement',
+    component: AddSalesAchievementComponent,
+  },
+  {
+    path: 'SalesAchievement/:id',
+    component: AddSalesAchievementComponent,
+  },
   // end rifat
 
   { path: '**', component: NotFoundComponent },
