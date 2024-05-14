@@ -34,7 +34,7 @@
     <td mat-cell *matCellDef="let element">{{ element.EmployeeId }}</td>
   </ng-container>
 
-  <ng-container matColumnDef="Action" style="margin-left: 10px">
+  <!-- <ng-container matColumnDef="Action" style="margin-left: 10px">
     <th mat-header-cell *matHeaderCellDef>
       <mat-icon style="margin-left: 10%">edit</mat-icon
       ><mat-icon style="margin-left: 20%"> delete</mat-icon>
@@ -61,10 +61,46 @@
         Delete
       </button>
 
-      <!-- <button class="mb-3 mt-3 ml-5" mat-raised-button color="primary" (click)="Edit(element.ProductId)" >Edit</button> -->
-      <!-- <button class="mb-3 mt-3 ml-5" mat-raised-button color="warn" (click)="Delete(element.ProductId)" >Delete</button></td> -->
-    </td></ng-container
-  >
+       <button class="mb-3 mt-3 ml-5" mat-raised-button color="primary" (click)="Edit(element.ProductId)" >Edit</button> 
+       <button class="mb-3 mt-3 ml-5" mat-raised-button color="warn" (click)="Delete(element.ProductId)" >Delete</button></td> 
+    </td></ng-container> -->
+
+
+
+    <ng-container matColumnDef="Action" style="margin-left: 10px">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-icon style="margin-left: 15%">edit</mat-icon
+        ><mat-icon style="margin-left: 15%">delete</mat-icon>
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-mini-fab color="primary"
+        (click)="EditSales(element.SalesTargetId)"
+          style="margin-right: 8%;margin-left: 10%;"
+          pTooltip="Edit" tooltipPosition="top" tooltipStyleClass="color:primary"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+  
+        <button mat-mini-fab  color="warn" pTooltip="Delete" tooltipPosition="top" (click)="Delete(element.SalesTargetId)"><mat-icon>delete</mat-icon>
+        </button>
+  
+        <!-- <button class="mb-3 mt-3 ml-5" mat-raised-button color="primary" (click)="Edit(element.ProductId)" >Edit</button> -->
+        <!-- <button class="mb-3 mt-3 ml-5" mat-raised-button color="warn" (click)="Delete(element.ProductId)" >Delete</button></td> -->
+      </td></ng-container
+    >
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
