@@ -16,6 +16,8 @@ import { ListSalesAchievementComponent } from './components/list-sales-achieveme
 import { AddSalesAchievementComponent } from './components/add-sales-achievement/add-sales-achievement.component';
 // end rifat
 import { HomeComponent } from './components/home/home.component';
+import { OrderComponent } from './components/order/order.component';
+import { OrderAddComponent } from './components/order-add/order-add.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,17 +33,46 @@ export const routes: Routes = [
   { path: 'unitConversion', component: UnitConversionComponent },
   { path: 'addUnitConversion', component: AddUnitConversionComponent },
   { path: 'addUnitConversion/:id', component: AddUnitConversionComponent },
+  { path: 'order', component: OrderComponent },
+  { path: 'order/add', component: OrderAddComponent },
 
   // rifat
-  {path: 'List',component: ListOfProductsComponent},
-  {path: 'add-products',component: AddProductsComponent},
-  {path: 'products/:id',component: AddProductsComponent},
-  {path: 'List-of-SalesTarget',component: ListOfSalesTargetsComponent},
-  {path: 'add-salestarget',component: AddSalesTargetsComponent},
-  {path: 'salestargets/:id',component: AddSalesTargetsComponent},
-  {path: 'List-of-SalesAchievement',component: ListSalesAchievementComponent},
-  {path: 'add-SalesAchievement',component: AddSalesAchievementComponent},
-  {path: 'SalesAchievement/:id',component: AddSalesAchievementComponent},
+  {
+    path: 'List',
+    component: ListOfProductsComponent,
+  },
+  {
+    path: 'add-products',
+    component: AddProductsComponent,
+  },
+  {
+    path: 'products/:id',
+    component: AddProductsComponent,
+  },
+  {
+    path: 'List-of-SalesTarget',
+    component: ListOfSalesTargetsComponent,
+  },
+  {
+    path: 'add-salestarget',
+    component: AddSalesTargetsComponent,
+  },
+  {
+    path: 'salestargets/:id',
+    component: AddSalesTargetsComponent,
+  },
+  {
+    path: 'List-of-SalesAchievement',
+    component: ListSalesAchievementComponent,
+  },
+  {
+    path: 'add-SalesAchievement',
+    component: AddSalesAchievementComponent,
+  },
+  {
+    path: 'SalesAchievement/:id',
+    component: AddSalesAchievementComponent,
+  },
   // end rifat
 
   { path: '**', component: NotFoundComponent },

@@ -7,44 +7,54 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-unit-add',
   standalone: true,
-  imports: [FormsModule,RouterLink],
+  imports: [FormsModule, RouterLink],
   templateUrl: './unit-add.component.html',
-  styleUrl: './unit-add.component.css'
+  styleUrl: './unit-add.component.css',
 })
 export class UnitAddComponent {
- unit : Unit = {
-  unitName : ''
- }
- id! : number;
-constructor(private service : UnitService, private router : Router, private route : ActivatedRoute){}
+  unit: Unit = {
+    unitName: '',
+  };
+  id!: number;
+  isValid = false;
+  constructor(
+    private service: UnitService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-ngOnInit(): void {
-  this.id = this.route.snapshot.params['id'];
-  console.log(this.id);
-  if(this.id){
-    this.service.get(this.id).subscribe({
-      next:(data)=>{
-        console.log(data)
-        this.unit = data;
-    }})
+  ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+    console.log(this.id);
+    if (this.id) {
+      this.service.get(this.id).subscribe({
+        next: (data) => {
+          console.log(data);
+          this.unit = data;
+        },
+      });
+    }
   }
-}
-addUnit() : void{
-  this.service.create(this.unit).subscribe({
-    next:(res)=>{
-      console.log(res);
-      this.router.navigate(['/unit'])
-    },
-    error : (e)=> console.error(e)
-  })
-}
-updateUnit() : void{
-  this.service.update(this.id,this.unit).subscribe({
-    next: (res) => {
-      console.log(res)
-      this.router.navigate(['unit'])
-    },
-    error: e => console.error(e)
-  })
-}
+  addUnit(): void {
+    if (this.unit.unitName != null) {
+      this.service.create(this.unit).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.router.navigate(['/unit']);
+        },
+        error: (e) => console.error(e),
+      });
+    } else {
+      this.isValid = false;
+    }
+  }
+  updateUnit(): void {
+    this.service.update(this.id, this.unit).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.router.navigate(['unit']);
+      },
+      error: (e) => console.error(e),
+    });
+  }
 }

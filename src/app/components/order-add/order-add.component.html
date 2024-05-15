@@ -1,0 +1,106 @@
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="row p-3 g-2 shadow-lg mt-4">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Order No.</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label class="input-group-text">#</label>
+            </div>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="orderMaster.orderNo"
+              readonly
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Pharmacy</label>
+          <select [(ngModel)]="orderMaster.pharmacyId" class="form-select">
+            <option value="0">Select Pharmacy</option>
+            @for(pharmacy of pharmacyList; track pharmacy.pharmacyId){
+            <option [value]="pharmacy.pharmacyId">
+              {{ pharmacy.pharmacyName }}
+            </option>
+            }
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Grand Total:</label>
+          <input
+            type="text"
+            class="form-control"
+            readonly
+            [(ngModel)]="orderMaster.grandTotal"
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Payment Total:</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="orderMaster.paymentTotal"
+            (input)="updateTotalDue()"
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Total Due:</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="orderMaster.totalDue"
+            readonly
+          />
+        </div>
+      </div>
+      <!-- for details part OrderItem -->
+
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>
+              <button
+                class="btn btn-primary"
+                (click)="addOrder(orderMaster.orderId)"
+              >
+                Add Product +
+              </button>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(item of orderService.orderItems; track item.id){
+          <tr>
+            <td>{{ item.productName }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.total }}</td>
+            <td>
+              <button class="btn btn-success btn-sm">Edit</button>
+              <button class="btn btn-danger btn-sm ms-2">Delete</button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+
+      <div class="col-md-12">
+        <button class="btn btn-primary" (click)="createOrder()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

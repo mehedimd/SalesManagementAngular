@@ -8,31 +8,31 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './unit.component.html',
-  styleUrl: './unit.component.css'
+  styleUrl: './unit.component.css',
 })
-export class UnitComponent implements OnInit{
-  units? : Unit[];
-  constructor(private service : UnitService){}
+export class UnitComponent implements OnInit {
+  units?: Unit[];
+  constructor(private service: UnitService) {}
 
   ngOnInit(): void {
     this.retriveUnit();
   }
 
-  retriveUnit() : void{
+  retriveUnit(): void {
     this.service.getAll().subscribe({
-      next: (data) =>{
+      next: (data) => {
         this.units = data;
         console.log(data);
-      }
-    })
+      },
+    });
   }
-  Delete(id : any): void{
+  Delete(id: any): void {
     this.service.delete(id).subscribe({
-      next : (res) => {
+      next: (res) => {
         this.ngOnInit();
         console.log(res);
       },
-      error : (e) => console.error(e)
-    })
+      error: (e) => console.error(e),
+    });
   }
 }

@@ -6,14 +6,13 @@ import { IProduct } from '../../models/Products.model';
 import { ProductService } from '../../services/products-service.service';
 import { MatIconModule } from '@angular/material/icon';
 import { ToastrService } from 'ngx-toastr';
-import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
     selector: 'List',
     standalone: true,
     templateUrl: './list-of-products.component.html',
     styleUrls: ['./list-of-products.component.css'],
-    imports: [MatTableModule, MatButtonModule, RouterLink, MatIconModule,TooltipModule]
+    imports: [MatTableModule, MatButtonModule, RouterLink, MatIconModule]
 })
 export class ListOfProductsComponent {
 
@@ -40,11 +39,11 @@ this.router.navigateByUrl("/products/"+ProductId)
  }
 
  Delete(ProductId: number) {
-  this.http.deleteProduct(ProductId).subscribe((data:any)=>{
-    console.log(data)
+  this.http.deleteProduct(ProductId).subscribe(()=>{
+    console.log("deleted")
     // this.productlist=this.productlist.filter(x=>x.ProductId!=ProductId)
     this.ngOnInit();
-    this.toaster.info(data)
+    this.toaster.error("Record deleted Successfully")
   })
   }
 
