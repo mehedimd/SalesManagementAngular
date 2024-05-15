@@ -63,6 +63,13 @@ export class OrderAddComponent implements OnInit {
         next: (res) => this.updateGrandTotal(),
       });
   }
+  // remove orderItems in orderList
+  removeItems(id: any) {
+    console.log(id);
+    this.orderService.orderItems.splice(id, 1);
+    this.updateGrandTotal();
+    this.updateTotalDue();
+  }
   // update Grand Total
   updateGrandTotal() {
     this.orderMaster.grandTotal = this.orderService.orderItems.reduce(

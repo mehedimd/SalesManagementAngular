@@ -83,7 +83,7 @@
           </tr>
         </thead>
         <tbody>
-          @for(item of orderService.orderItems; track item.id){
+          @for(item of orderService.orderItems; track item.id; let index = $index){
           <tr>
             <td>{{ item.productName }}</td>
             <td>{{ item.price }}</td>
@@ -91,7 +91,9 @@
             <td>{{ item.total }}</td>
             <td>
               <button class="btn btn-success btn-sm">Edit</button>
-              <button class="btn btn-danger btn-sm ms-2">Delete</button>
+              <button class="btn btn-danger btn-sm ms-2" (click)="removeItems(index)">
+                Delete
+              </button>
             </td>
           </tr>
           }
