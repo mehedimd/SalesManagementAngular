@@ -16,7 +16,7 @@ export class UnitAddComponent {
     unitName: '',
   };
   id!: number;
-  isValid = false;
+  isValid: boolean = true;
   constructor(
     private service: UnitService,
     private router: Router,
@@ -36,14 +36,17 @@ export class UnitAddComponent {
     }
   }
   addUnit(): void {
-    if (this.unit.unitName != null) {
-      this.service.create(this.unit).subscribe({
-        next: (res) => {
-          console.log(res);
-          this.router.navigate(['/unit']);
-        },
-        error: (e) => console.error(e),
-      });
+    if (this.unit.unitName != null && this.unit.unitName != '') {
+      this.isValid = true;
+      if (this.isValid) {
+        this.service.create(this.unit).subscribe({
+          next: (res) => {
+            console.log(res);
+            this.router.navigate(['/unit']);
+          },
+          error: (e) => console.error(e),
+        });
+      }
     } else {
       this.isValid = false;
     }

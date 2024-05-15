@@ -4,7 +4,11 @@
   <div class="row g-2">
     <div class="form-group col-md-6">
       <label>Medicine</label>
-      <select class="form-select" (change)="updatePrice($event)">
+      <select
+        class="form-select"
+        (change)="updatePrice($event)"
+        [(ngModel)]="orderItem.productId"
+      >
         <option value="0">--Select Medecine</option>
         @for(product of allProducts; track product.productId){
         <option value="{{ product.productId }}">

@@ -10,6 +10,8 @@ import { PharmacyService } from '../../services/pharmacy.service';
 import { Pharmacy } from '../../models/pharmacy.model';
 import { OrderItemComponent } from '../order-item/order-item.component';
 import { OrderService } from '../../services/order.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-order-add',
   standalone: true,
@@ -20,7 +22,7 @@ import { OrderService } from '../../services/order.service';
 export class OrderAddComponent implements OnInit {
   orderMaster: Order = {
     orderId: 0,
-    orderNo: 1000 + Math.floor(Math.random() * 1000 + 500),
+    orderNo: 10000 + Math.floor(Math.random() * 1000 + 500),
     orderDate: '2024-02-04',
     grandTotal: 0,
     paymentTotal: 0,
@@ -32,7 +34,9 @@ export class OrderAddComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private pharmacyService: PharmacyService,
-    public orderService: OrderService
+    public orderService: OrderService,
+    private router: Router,
+    private toastr: ToastrService
   ) {}
   ngOnInit(): void {
     this.getAllPharmacy();
@@ -78,8 +82,27 @@ export class OrderAddComponent implements OnInit {
   createOrder() {
     console.log(this.orderMaster);
     this.orderService.create(this.orderMaster).subscribe({
-      next: (res) => console.log(res),
+      next: (res) => {
+        console.log(res);
+        this.toastr.success(res, 'Order');
+        this.router.navigate(['/order']);
+        this.resetOrderForm();
+      },
       error: (e) => console.log(e),
     });
+  }
+
+  // reset all input
+  resetOrderForm() {
+    this.orderMaster = {
+      orderId: 0,
+      orderNo: 10000 + Math.floor(Math.random() * 1000 + 500),
+      orderDate: '2024-02-04',
+      grandTotal: 0,
+      paymentTotal: 0,
+      totalDue: 0,
+      pharmacyId: 0,
+    };
+    this.orderService.orderItems = [];
   }
 }
