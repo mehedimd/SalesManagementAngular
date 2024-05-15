@@ -2,8 +2,8 @@ export class Order {
   orderId: any;
   orderNo!: number;
   orderDate: any;
-  grandTotal!: number;
-  paymentTotal!: number;
+  grandTotal: number = 0;
+  paymentTotal: number = 0;
   totalDue!: number;
-  pharmacyId!: number;
+  pharmacyId: number = 0;
 }

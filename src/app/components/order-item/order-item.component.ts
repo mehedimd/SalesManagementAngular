@@ -24,6 +24,7 @@ export class OrderItemComponent implements OnInit {
     total: 0,
   };
   allProducts: any = [];
+
   constructor(
     private orderService: OrderService,
     private productService: ProductService,
@@ -45,6 +46,7 @@ export class OrderItemComponent implements OnInit {
       error: (e) => console.log(e),
     });
   }
+
   // price update
   updatePrice(e: any) {
     if (e.target.selectedIndex != 0) {

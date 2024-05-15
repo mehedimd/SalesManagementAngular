@@ -1,8 +1,45 @@
-<div>
-  <input
-    type="button"
-    class="btn btn-primary"
-    routerLink="/order/add"
-    value="Order Now"
-  />
+<div class="row g-2">
+  <div class="col-md-10 offset-md-1">
+    <input
+      type="button"
+      class="btn btn-primary"
+      routerLink="/order/add"
+      value="Order Now"
+    />
+  </div>
+  <div class="col-md-10 offset-md-1">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#Order No.</th>
+          <th>Order Date</th>
+          <th>Pharmacy</th>
+          <th>Grand Total</th>
+          <th>Payment Total</th>
+          <th>Total Due</th>
+          <th>--Action--</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(item of allOrderList; track item.orderId){
+        <tr>
+          <td>{{ item.orderNo }}</td>
+          <td>{{ item.orderDate }}</td>
+          <td>{{ item.pharmacyName }}</td>
+          <td>{{ item.grandTotal }}</td>
+          <td>{{ item.paymentTotal }}</td>
+          <td>{{ item.totalDue }}</td>
+          <td>
+            <button
+              (click)="deleteOrder(item.orderId)"
+              class="btn btn-danger btn-sm"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>

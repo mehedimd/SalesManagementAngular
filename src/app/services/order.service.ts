@@ -12,11 +12,21 @@ export class OrderService {
   orderItems: OrderItem[] = [];
   constructor(private http: HttpClient) {}
 
+  // create
   create(order: Order): Observable<any> {
     const obj = {
       ...order,
       orderItems: this.orderItems,
     };
-    return this.http.post(baseUrl, obj);
+    return this.http.post(baseUrl, obj, { responseType: 'text' });
+  }
+
+  // get all order
+  getAllOrder(): Observable<any> {
+    return this.http.get<any>(baseUrl);
+  }
+  // delete Order
+  delete(id: number) {
+    return this.http.delete(`${baseUrl}/${id}`, { responseType: 'text' });
   }
 }
