@@ -16,6 +16,8 @@ import { ListSalesAchievementComponent } from './components/list-sales-achieveme
 import { AddSalesAchievementComponent } from './components/add-sales-achievement/add-sales-achievement.component';
 // end rifat
 import { HomeComponent } from './components/home/home.component';
+import { ListEmployeeComponent } from './components/list-employee/list-employee.component';
+import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -43,6 +45,12 @@ export const routes: Routes = [
   {path: 'add-SalesAchievement',component: AddSalesAchievementComponent},
   {path: 'SalesAchievement/:id',component: AddSalesAchievementComponent},
   // end rifat
+
+  
+
+  {path:'employee',component:ListEmployeeComponent},
+  {path:'add-employee',component:AddEmployeeComponent},
+  {path:'employee/:id',component:AddEmployeeComponent},
 
   { path: '**', component: NotFoundComponent },
 ];
