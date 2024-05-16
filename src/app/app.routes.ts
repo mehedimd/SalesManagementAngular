@@ -35,6 +35,7 @@ export const routes: Routes = [
   { path: 'addUnitConversion/:id', component: AddUnitConversionComponent },
   { path: 'order', component: OrderComponent },
   { path: 'order/add', component: OrderAddComponent },
+  { path: 'order/add/:id', component: OrderAddComponent },
 
   // rifat
   {
