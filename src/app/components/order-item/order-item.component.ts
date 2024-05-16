@@ -24,6 +24,8 @@ export class OrderItemComponent implements OnInit {
     total: 0,
   };
   allProducts: any = [];
+  isProduct: boolean = true;
+  isQuantity: boolean = true;
 
   constructor(
     private orderService: OrderService,
@@ -34,6 +36,12 @@ export class OrderItemComponent implements OnInit {
   ngOnInit(): void {
     // all product get
     this.getAllProduct();
+    if (this.data.itemIndex != null) {
+      this.orderItem = Object.assign(
+        {},
+        this.orderService.orderItems[this.data.itemIndex]
+      );
+    }
   }
 
   /// all product retrive
@@ -67,7 +75,22 @@ export class OrderItemComponent implements OnInit {
 
   // add order item
   addOrderItem() {
-    this.orderService.orderItems.push(this.orderItem);
-    this.dialogRef.close();
+    this.isProduct = true;
+    this.isQuantity = true;
+    if (this.orderItem.productId == 0) {
+      this.isProduct = false;
+    }
+    if (this.orderItem.quantity <= 0) {
+      this.isQuantity = false;
+    }
+    if (this.isProduct && this.isQuantity) {
+      if (this.data.itemIndex == null) {
+        this.orderService.orderItems.push(this.orderItem);
+        this.dialogRef.close();
+      } else {
+        this.orderService.orderItems[this.data.itemIndex] = this.orderItem;
+        this.dialogRef.close();
+      }
+    }
   }
 }

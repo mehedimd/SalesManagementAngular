@@ -20,8 +20,12 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="">Pharmacy</label>
-          <select [(ngModel)]="orderMaster.pharmacyId" class="form-select">
-            <option value="0">Select Pharmacy</option>
+          <select
+            [(ngModel)]="orderMaster.pharmacyId"
+            class="form-select"
+            [class.is-invalid]="!isValid"
+          >
+            <option value="0">--Select Pharmacy--</option>
             @for(pharmacy of pharmacyList; track pharmacy.pharmacyId){
             <option [value]="pharmacy.pharmacyId">
               {{ pharmacy.pharmacyName }}
@@ -75,7 +79,7 @@
             <th>
               <button
                 class="btn btn-primary"
-                (click)="addOrder(orderMaster.orderId)"
+                (click)="addOrEditItems(null, orderMaster.orderId)"
               >
                 Add Product +
               </button>
@@ -83,15 +87,24 @@
           </tr>
         </thead>
         <tbody>
-          @for(item of orderService.orderItems; track item.id; let index = $index){
+          @for(item of orderService.orderItems; track item.id; let index =
+          $index){
           <tr>
             <td>{{ item.productName }}</td>
             <td>{{ item.price }}</td>
             <td>{{ item.quantity }}</td>
             <td>{{ item.total }}</td>
             <td>
-              <button class="btn btn-success btn-sm">Edit</button>
-              <button class="btn btn-danger btn-sm ms-2" (click)="removeItems(index)">
+              <button
+                class="btn btn-warning btn-sm"
+                (click)="addOrEditItems(index, orderMaster.orderId)"
+              >
+                Edit
+              </button>
+              <button
+                class="btn btn-danger btn-sm ms-2"
+                (click)="removeItems(index)"
+              >
                 Delete
               </button>
             </td>
@@ -101,7 +114,15 @@
       </table>
 
       <div class="col-md-12">
-        <button class="btn btn-primary" (click)="createOrder()">Submit</button>
+        <button
+          class="btn btn-primary"
+          (click)="createOrder(orderMaster.orderId)"
+        >
+          Submit
+        </button>
+        <button class="btn btn-success ms-2" routerLink="/order">
+          BACK TO LIST
+        </button>
       </div>
     </div>
   </div>

@@ -29,4 +29,17 @@ export class OrderService {
   delete(id: number) {
     return this.http.delete(`${baseUrl}/${id}`, { responseType: 'text' });
   }
+  // get order by id
+  getOrderById(id: any): Observable<any> {
+    return this.http.get<any>(`${baseUrl}/${id}`);
+  }
+
+  // update order
+  updateOrder(id: number, data: any): Observable<any> {
+    const obj = {
+      ...data,
+      orderItems: this.orderItems,
+    };
+    return this.http.put(`${baseUrl}/${id}`, obj, { responseType: 'text' });
+  }
 }

@@ -24,15 +24,21 @@
         @for(item of allOrderList; track item.orderId){
         <tr>
           <td>{{ item.orderNo }}</td>
-          <td>{{ item.orderDate }}</td>
+          <td>{{ item.orderDate.slice(0, 10) }}</td>
           <td>{{ item.pharmacyName }}</td>
           <td>{{ item.grandTotal }}</td>
           <td>{{ item.paymentTotal }}</td>
           <td>{{ item.totalDue }}</td>
           <td>
             <button
+              routerLink="/order/add/{{ item.orderId }}"
+              class="btn btn-warning btn-sm"
+            >
+              Edit
+            </button>
+            <button
               (click)="deleteOrder(item.orderId)"
-              class="btn btn-danger btn-sm"
+              class="btn btn-danger btn-sm ms-2"
             >
               Delete
             </button>
