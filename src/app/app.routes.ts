@@ -18,6 +18,9 @@ import { AddSalesAchievementComponent } from './components/add-sales-achievement
 import { HomeComponent } from './components/home/home.component';
 import { OrderComponent } from './components/order/order.component';
 import { OrderAddComponent } from './components/order-add/order-add.component';
+import { RegisterComponent } from './components/authentication/register/register.component';
+import { LoginComponent } from './components/authentication/login/login.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,9 +36,12 @@ export const routes: Routes = [
   { path: 'unitConversion', component: UnitConversionComponent },
   { path: 'addUnitConversion', component: AddUnitConversionComponent },
   { path: 'addUnitConversion/:id', component: AddUnitConversionComponent },
-  { path: 'order', component: OrderComponent },
+  { path: 'order', component: OrderComponent, canActivate: [authGuard] },
   { path: 'order/add', component: OrderAddComponent },
   { path: 'order/add/:id', component: OrderAddComponent },
+
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
 
   // rifat
   {

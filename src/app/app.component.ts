@@ -6,10 +6,26 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,RouterLink, MatIconModule, MatButtonModule,RouterLinkActive],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    MatIconModule,
+    MatButtonModule,
+    RouterLinkActive,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'myPharmacy';
+  isLoggedIn(): boolean {
+    const jwt = sessionStorage.getItem('jwtToken');
+    if (jwt != null) {
+      return false;
+    }
+    return true;
+  }
+  logout() {
+    sessionStorage.removeItem('jwtToken');
+  }
 }
