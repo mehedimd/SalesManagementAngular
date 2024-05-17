@@ -15,9 +15,15 @@
             <a mat-button color="warn" routerLink="pharmacy">PHARMACY</a>
             <a mat-button color="warn" routerLink="unit">UNIT</a>
             <a mat-button color="warn" routerLink="unitConversion"
-              >Unit Conversion</a
+              >UNIT CONVERSION</a
             >
-            <a mat-button color="warn" routerLink="order">Orders</a>
+            <a mat-button color="warn" routerLink="order">ORDER</a>
+            <a mat-button color="warn" routerLink="register">REGISTER</a>
+            @if(isLoggedIn()){
+            <a mat-button color="warn" routerLink="login">LOGIN</a>
+            } @else {
+            <a mat-button color="warn" routerLink="login" (click)="logout()">LOG OUT</a>
+            }
           </div>
         </div>
       </div>
