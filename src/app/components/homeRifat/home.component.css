@@ -1,60 +1,31 @@
 section {
-    display: table;
-  }
-  
-  .example-label {
-    display: table-cell;
-    font-size: 14px;
-    margin-left: 8px;
-    min-width: 120px;
-  }
-  
-  .example-button-row {
-    display: table-cell;
-    max-width: 600px;
-  }
-  
-  .example-button-row .mat-mdc-button-base {
-    margin: 8px 8px 8px 0;
-  }
-  
-  .example-flex-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  
-  .example-button-row {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-  
-    height: 100vh; /* Adjust the height as needed */
+  display: table;
 }
 
-/* Ensure button container is also centered horizontally */
-.center-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center; /* For IE11 compatibility */
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+.example-button-row {
+  height: 100%;
+  width: 100%;
+}
+.mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
 }
 
-
-.center-container {
-    text-align: center;
-}
-.example-button-row{
-margin-left: 500px;
-display: flex;
-
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 #background {
-  background-image: url('https://img2023.weyesimg.com/uploads/ouyeedisplays.allweyes.com/images/cd36e3c07498074b4ebb39d4623fb407.jpg');
+  background-image: url("https://img2023.weyesimg.com/uploads/ouyeedisplays.allweyes.com/images/cd36e3c07498074b4ebb39d4623fb407.jpg");
   background-size: cover; /* Ensure the background image covers the entire element */
   background-position: center; /* Center the background image */
-  height: 100%; /* Set the height of the background to 100% of the viewport height */
+  height: 100vh; /* Set the height of the background to 100% of the viewport height */
   width: 100%;
-  
 }
-

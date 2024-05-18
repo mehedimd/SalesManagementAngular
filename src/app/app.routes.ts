@@ -23,7 +23,7 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'pharmacy', component: PharmacyComponent },
   { path: 'add', component: AddPharmacyComponent },
