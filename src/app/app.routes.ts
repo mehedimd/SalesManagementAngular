@@ -18,6 +18,7 @@ import { AddSalesAchievementComponent } from './components/add-sales-achievement
 import { HomeComponent } from './components/home/home.component';
 import { OrderComponent } from './components/order/order.component';
 import { OrderAddComponent } from './components/order-add/order-add.component';
+import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -74,6 +75,11 @@ export const routes: Routes = [
     component: AddSalesAchievementComponent,
   },
   // end rifat
+
+  {
+    path:'categories',
+    component:CategoriesListComponent,
+  },
 
   { path: '**', component: NotFoundComponent },
 ];
