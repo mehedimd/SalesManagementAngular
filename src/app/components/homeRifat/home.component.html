@@ -1,45 +1,51 @@
-
-    
 <section id="background">
-    <div class="example-button-row flex justify-center" style="flex-direction: column;">
-        <button mat-fab extended color="primary" (click)="redirectToProduct()">
-            <mat-icon>medical_services</mat-icon>
-            
-            Go To Medicines List
-        </button>
+  <div
+    class="example-button-row d-flex justify-content-center align-items-center flex-column"
+  >
+    <button mat-fab extended color="primary" (click)="redirectToProduct()">
+      <mat-icon>medical_services</mat-icon>
 
-        <button mat-fab extended color="primary" (click)="redirectToSalesTargets()">
-            <mat-icon><span class="material-symbols-outlined">
-                point_of_sale
-                </span></mat-icon>
-            
-            Go To SalesTargets
-        </button>
+      Go To Medicines List
+    </button>
 
+    <button mat-fab extended color="primary" (click)="redirectToSalesTargets()">
+      <mat-icon
+        ><span class="material-symbols-outlined">
+          point_of_sale
+        </span></mat-icon
+      >
 
-        <button mat-fab extended color="primary" (click)="redirectToSalesAchievement()">
-            <mat-icon><span class="material-symbols-outlined">
-                point_of_sale
-                </span></mat-icon>
-            
-            Go To SalesAchievent
-        </button>
+      Go To SalesTargets
+    </button>
 
-        <button mat-fab extended color="primary" (click)="redirectToSalesAchievement()">
-            <mat-icon><span class="material-symbols-outlined">
-                point_of_sale
-                </span></mat-icon>
-            
-            Go To Orders
-        </button>
+    <button
+      mat-fab
+      extended
+      color="primary"
+      (click)="redirectToSalesAchievement()"
+    >
+      <mat-icon
+        ><span class="material-symbols-outlined">
+          point_of_sale
+        </span></mat-icon
+      >
 
-    </div>
-    
+      Go To SalesAchievent
+    </button>
 
-    
+    <button
+      mat-fab
+      extended
+      color="primary"
+      (click)="redirectToSalesAchievement()"
+    >
+      <mat-icon
+        ><span class="material-symbols-outlined">
+          point_of_sale
+        </span></mat-icon
+      >
 
-
-  </section>
-
-  
-  
+      Go To Orders
+    </button>
+  </div>
+</section>

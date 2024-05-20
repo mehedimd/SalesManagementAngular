@@ -5,11 +5,12 @@
     <div class="form-group col-md-6">
       <label>Medicine</label>
       <select
+        [class.is-invalid]="!isProduct"
         class="form-select"
         (change)="updatePrice($event)"
         [(ngModel)]="orderItem.productId"
       >
-        <option value="0">--Select Medecine</option>
+        <option value="0">--Select Medecine--</option>
         @for(product of allProducts; track product.productId){
         <option value="{{ product.productId }}">
           {{ product.productName }}
@@ -31,6 +32,7 @@
     <div class="form-group col-md-6">
       <label>Quantity</label>
       <input
+        [class.is-invalid]="!isQuantity"
         class="form-control"
         type="number"
         min="1"

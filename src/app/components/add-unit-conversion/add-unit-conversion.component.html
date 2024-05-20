@@ -1,5 +1,5 @@
 <div class="row d-flex justify-content-center">
-  <div class="col-md-6 shadow-lg p-3 mt-3">
+  <div class="col-md-6 shadow-lg p-3 my-5">
     <form [formGroup]="unitConversionForm" (ngSubmit)="submitForm()">
       <div class="row g-3">
         @if(isEdit){
@@ -21,22 +21,50 @@
         <div class="col-md-6">
           <label for="unitId" class="form-label">Unit</label>
 
-          <select id="unitId" class="form-select" formControlName="unitId">
+          <select
+            id="unitId"
+            class="form-select"
+            formControlName="unitId"
+            [class]="{
+              'is-invalid': unitConversionForm.controls.unitId.errors
+            }"
+          >
             @for(unit of allUnit; track unit.unitId){
             <option value="{{ unit.unitId }}">{{ unit.unitName }}</option>
             }
           </select>
+          @if ( unitConversionForm.controls.unitId.errors) {
+          <div class="invalid-feedback">
+            @if (unitConversionForm.controls.unitId.errors['required']) {
+            <div>unit is required</div>
+            }
+          </div>
+          }
         </div>
 
         <div class="col-md-6">
           <label for="productId" class="form-label">Product</label>
-          <select id="producId" class="form-select" formControlName="productId">
+          <select
+            id="producId"
+            class="form-select"
+            formControlName="productId"
+            [class]="{
+              'is-invalid': unitConversionForm.controls.productId.errors
+            }"
+          >
             @for(product of allProducts; track product.productId){
             <option value="{{ product.productId }}">
               {{ product.productName }}
             </option>
             }
           </select>
+          @if ( unitConversionForm.controls.productId.errors) {
+          <div class="invalid-feedback">
+            @if (unitConversionForm.controls.productId.errors['required']) {
+            <div>product is required</div>
+            }
+          </div>
+          }
         </div>
 
         <div class="col-md-6">
@@ -46,14 +74,33 @@
             type="text"
             class="form-control"
             id="quantity"
+            [class]="{
+              'is-invalid': unitConversionForm.controls.quantity.errors
+            }"
           />
+          @if ( unitConversionForm.controls.quantity.errors) {
+          <div class="invalid-feedback">
+            @if (unitConversionForm.controls.quantity.errors['required']) {
+            <div>quantity is required</div>
+            } @if (unitConversionForm.controls.quantity.errors['min']) {
+            <div>Quantity must be at least 1</div>
+            }
+          </div>
+          }
         </div>
 
         <div class="col-md-12">
           @if(isEdit){
           <button mat-flat-button color="warn">Update</button>
           }@else {
-          <button mat-flat-button color="accent" type="submit">Submit</button>
+          <button
+            mat-flat-button
+            color="accent"
+            [disabled]="unitConversionForm.invalid"
+            type="submit"
+          >
+            Submit
+          </button>
           }
         </div>
       </div>

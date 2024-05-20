@@ -1,54 +1,56 @@
-<div class="row d-flex justify-content-center m-5">
-  <div class="col-md-10 shadow-lg p-3">
+<div class="row d-flex justify-content-center p-4">
+  <div class="col-md-12 shadow-lg">
     <!-- <label for="color" [ngStyle]="{'color':color}">Choose Color</label>
       <input [(ngModel)]="color" type="color" class="form-control"> -->
     <button class="btn btn-primary mb-2" routerLink="/add">
       Create New Pharmacy
     </button>
     <div class="row">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>PharmacyID</th>
-            <th>PharmacyName</th>
-            <th>PhoneNumber</th>
-            <th>Email</th>
-            <th>Country</th>
-            <th>City</th>
-            <th>State</th>
-            <th>PostalCode</th>
-            <th>..Action..</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (item of pharmacies; track item.pharmacyId;) {
-          <tr>
-            <td>{{ item.pharmacyId }}</td>
-            <td>{{ item.pharmacyName }}</td>
-            <td>{{ item.phoneNumber }}</td>
-            <td>{{ item.emailAddress }}</td>
-            <td>{{ item.country }}</td>
-            <td>{{ item.city }}</td>
-            <td>{{ item.state }}</td>
-            <td>{{ item.postalCode }}</td>
-            <td>
-              <button
-                class="btn btn-secondary"
-                routerLink="/add/{{ item.pharmacyId }}"
-              >
-                Edit
-              </button>
-              <button
-                class="btn btn-danger ms-2"
-                (click)="Delete(item.pharmacyId)"
-              >
-                Delete
-              </button>
-            </td>
-          </tr>
-          }
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>PharmacyID</th>
+              <th>PharmacyName</th>
+              <th>PhoneNumber</th>
+              <th>Email</th>
+              <th>Country</th>
+              <th>City</th>
+              <th>State</th>
+              <th>PostalCode</th>
+              <th>..Action..</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of pharmacies; track item.pharmacyId;) {
+            <tr>
+              <td>{{ item.pharmacyId }}</td>
+              <td>{{ item.pharmacyName }}</td>
+              <td>{{ item.phoneNumber }}</td>
+              <td>{{ item.emailAddress }}</td>
+              <td>{{ item.country }}</td>
+              <td>{{ item.city }}</td>
+              <td>{{ item.state }}</td>
+              <td>{{ item.postalCode }}</td>
+              <td>
+                <button
+                  class="btn btn-secondary"
+                  routerLink="/add/{{ item.pharmacyId }}"
+                >
+                  Edit
+                </button>
+                <button
+                  class="btn btn-danger ms-2"
+                  (click)="Delete(item.pharmacyId)"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

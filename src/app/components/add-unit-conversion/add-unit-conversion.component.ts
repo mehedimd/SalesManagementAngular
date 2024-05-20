@@ -25,6 +25,7 @@ export class AddUnitConversionComponent implements OnInit {
   allProducts?: any;
   id?: any;
   isEdit = false;
+  submitted: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,9 +38,9 @@ export class AddUnitConversionComponent implements OnInit {
 
   unitConversionForm: any = this.formBuilder.group({
     unitConvertionId: [0],
-    unitId: [0],
-    productId: [0],
-    quantity: [0, [Validators.required]],
+    unitId: ['', [Validators.required]],
+    productId: ['', [Validators.required]],
+    quantity: ['', [Validators.required, Validators.min(1)]],
   });
 
   ngOnInit(): void {
@@ -83,6 +84,7 @@ export class AddUnitConversionComponent implements OnInit {
   }
   // form add and edit
   submitForm(): void {
+    console.log(this.unitConversionForm.value);
     const formData: UnitConversion = {
       unitConvertionId: this.unitConversionForm.value.unitConvertionId!,
       unitId: this.unitConversionForm.value.unitId!,

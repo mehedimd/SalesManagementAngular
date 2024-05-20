@@ -1,0 +1,95 @@
+<div class="row">
+  <div
+    class="col-md-6 col-lg-4 offset-md-3 offset-lg-4 shadow-lg px-5 py-4 my-3"
+  >
+    <h2 class="text-center text-primary">REGISTRATION FORM</h2>
+    <form [formGroup]="newRegisterForm" (ngSubmit)="register()">
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="firstName"
+          id="fname"
+          [class]="{ 'is-invalid': newRegisterForm.controls.firstName.errors }"
+        />
+        @if(newRegisterForm.controls.firstName.errors){
+        <div class="invalid-feedback">
+          @if(newRegisterForm.controls.firstName.errors['required']){
+          <div>first name is required</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="lastName"
+          id="lname"
+          [class]="{ 'is-invalid': newRegisterForm.controls.lastName.errors }"
+        />
+        @if(newRegisterForm.controls.lastName.errors){
+        <div class="invalid-feedback">
+          @if(newRegisterForm.controls.lastName.errors['required']){
+          <div>last name is required</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          formControlName="email"
+          id="email"
+          [class]="{ 'is-invalid': newRegisterForm.controls.email.errors }"
+        />
+        @if(newRegisterForm.controls.email.errors){
+        <div class="invalid-feedback">
+          @if(newRegisterForm.controls.email.errors['required']){
+          <div>email is required</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="form-group">
+        <label for="pass">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="password"
+          id="pass"
+          [class]="{ 'is-invalid': newRegisterForm.controls.password.errors }"
+        />
+        @if(newRegisterForm.controls.password.errors){
+        <div class="invalid-feedback">
+          @if(newRegisterForm.controls.password.errors['required']){
+          <div>password is required</div>
+          } @if(newRegisterForm.controls.password.errors['minlength']){
+          <div>password must be at least 6 character</div>
+          }
+        </div>
+        }
+      </div>
+      <button
+        class="btn btn-primary mt-2"
+        (click)="register()"
+        [disabled]="newRegisterForm.invalid"
+      >
+        REGISTER
+      </button>
+      <div class="mt-2">
+        <span class="text-danger">{{ finalError }}</span>
+      </div>
+      <div class="mt-2">
+        <span>already have an account? &#x2B9E;&#x2B9E;</span>
+        <a class="btn btn-outline-dark btn-sm ms-2" routerLink="/login"
+          >LOGIN</a
+        >
+      </div>
+    </form>
+  </div>
+</div>
