@@ -24,6 +24,8 @@ import { RegisterComponent } from './components/authentication/register/register
 import { LoginComponent } from './components/authentication/login/login.component';
 import { authGuard } from './auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ListOfCategoryComponent } from './components/list-of-category/list-of-category.component';
+import { AddCategoryComponent } from './components/add-category/add-category.component';
 
 export const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -87,6 +89,9 @@ export const routes: Routes = [
 
   {path:'employee',component:ListOfEmployeeComponent},
   {path:'add-employee',component:AddEmployeeComponent},
+
+  {path:'category',component:ListOfCategoryComponent},
+  {path:'add-category',component:AddCategoryComponent},
 
   { path: '**', component: NotFoundComponent },
 ];

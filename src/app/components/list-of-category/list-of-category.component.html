@@ -1,0 +1,36 @@
+<div class="row g-2">
+    <div class="col-md-10 offset-md-1">
+      <input
+        type="button"
+        class="btn btn-primary"
+        routerLink="/add-category"
+        value="Create Category"
+      />
+    </div>
+    <div class="col-md-10 offset-md-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Category Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(item of allCategorylist; track item.employeeId){
+          <tr>
+            <td>{{ item.categoryId}}</td>
+            <td>{{ item.categoryName}}</td>
+            <td>
+              <button
+                (click)="deleteCategory(item.categoryId)"
+                class="btn btn-danger btn-sm"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
