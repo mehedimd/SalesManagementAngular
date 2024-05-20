@@ -15,7 +15,7 @@ import { AddSalesTargetsComponent } from './components/add-sales-targets/add-sal
 import { ListSalesAchievementComponent } from './components/list-sales-achievement/list-sales-achievement.component';
 import { AddSalesAchievementComponent } from './components/add-sales-achievement/add-sales-achievement.component';
 // end rifat
-import { HomeComponent } from './components/home/home.component';
+
 import { OrderComponent } from './components/order/order.component';
 import { OrderAddComponent } from './components/order-add/order-add.component';
 import { ListOfEmployeeComponent } from './components/list-of-employee/list-of-employee.component';
@@ -87,8 +87,8 @@ export const routes: Routes = [
   },
   // end rifat
 
-  {path:'employee',component:ListOfEmployeeComponent},
-  {path:'add-employee',component:AddEmployeeComponent},
+  { path: 'employee', component: ListOfEmployeeComponent },
+  { path: 'add-employee', component: AddEmployeeComponent },
 
   {path:'category',component:ListOfCategoryComponent},
   {path:'add-category',component:AddCategoryComponent},
