@@ -18,6 +18,8 @@ import { AddSalesAchievementComponent } from './components/add-sales-achievement
 import { HomeComponent } from './components/home/home.component';
 import { OrderComponent } from './components/order/order.component';
 import { OrderAddComponent } from './components/order-add/order-add.component';
+import { ListOfEmployeeComponent } from './components/list-of-employee/list-of-employee.component';
+import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { authGuard } from './auth.guard';
@@ -81,6 +83,9 @@ export const routes: Routes = [
     component: AddSalesAchievementComponent,
   },
   // end rifat
+
+  {path:'employee',component:ListOfEmployeeComponent},
+  {path:'add-employee',component:AddEmployeeComponent},
 
   { path: '**', component: NotFoundComponent },
 ];
