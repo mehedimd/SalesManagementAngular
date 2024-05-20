@@ -31,7 +31,7 @@ export class LoginComponent {
     this.loginService.loginPost(this.newLoginForm.value).subscribe({
       next: (res) => {
         console.log(res);
-        sessionStorage.setItem('jwtToken', res);
+        sessionStorage.setItem('jwtToken', res.token);
         this.router.navigate(['/home']);
       },
       error: (e) => (this.finalError = e.error.error),

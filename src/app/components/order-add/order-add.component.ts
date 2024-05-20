@@ -116,7 +116,7 @@ export class OrderAddComponent implements OnInit {
         this.orderService.updateOrder(orderId, this.orderMaster).subscribe({
           next: (res) => {
             console.log(res);
-            this.toastr.success(res, 'Order');
+            this.toastr.success(res.message, 'Order');
             this.router.navigate(['/order']);
             this.resetOrderForm();
           },
@@ -126,7 +126,7 @@ export class OrderAddComponent implements OnInit {
         this.orderService.create(this.orderMaster).subscribe({
           next: (res) => {
             console.log(res);
-            this.toastr.success(res, 'Order');
+            this.toastr.success(res.message, 'Order');
             this.router.navigate(['/order']);
             this.resetOrderForm();
           },

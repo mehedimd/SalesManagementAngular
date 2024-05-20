@@ -1,7 +1,5 @@
 <div class="row d-flex justify-content-center p-4">
-  <div class="col-md-12 shadow-lg">
-    <!-- <label for="color" [ngStyle]="{'color':color}">Choose Color</label>
-      <input [(ngModel)]="color" type="color" class="form-control"> -->
+  <div class="col-md-12">
     <button class="btn btn-primary mb-2" routerLink="/add">
       Create New Pharmacy
     </button>
@@ -10,9 +8,8 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>PharmacyID</th>
-              <th>PharmacyName</th>
-              <th>PhoneNumber</th>
+              <th>Name</th>
+              <th>Phone</th>
               <th>Email</th>
               <th>Country</th>
               <th>City</th>
@@ -24,7 +21,6 @@
           <tbody>
             @for (item of pharmacies; track item.pharmacyId;) {
             <tr>
-              <td>{{ item.pharmacyId }}</td>
               <td>{{ item.pharmacyName }}</td>
               <td>{{ item.phoneNumber }}</td>
               <td>{{ item.emailAddress }}</td>
@@ -34,13 +30,13 @@
               <td>{{ item.postalCode }}</td>
               <td>
                 <button
-                  class="btn btn-secondary"
+                  class="btn btn-secondary btn-sm"
                   routerLink="/add/{{ item.pharmacyId }}"
                 >
                   Edit
                 </button>
                 <button
-                  class="btn btn-danger ms-2"
+                  class="btn btn-danger btn-sm ms-md-2 mt-2 mt-lg-0"
                   (click)="Delete(item.pharmacyId)"
                 >
                   Delete
