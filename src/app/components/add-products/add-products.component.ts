@@ -38,11 +38,11 @@ export class AddProductsComponent {
 
   submitted = false;
   ProductForm = this.builder.group({
-    ProductId: [0],
-    ProductName: ['', [Validators.required]],
-    ProductDescription: ['', [Validators.required]],
-    Price: [0, [Validators.required]],
-    CategoryId: [0],
+    productId: [0],
+    productName: ['', [Validators.required]],
+    productDescription: ['', [Validators.required]],
+    price: [0, [Validators.required]],
+    categoryId: [0],
   });
 
   productId!: number;
@@ -55,7 +55,7 @@ export class AddProductsComponent {
       this.service.getProduct(this.productId).subscribe((result) => {
         console.log(result);
         this.ProductForm.patchValue(result);
-        this.ProductForm.controls.ProductId.disabled;
+        this.ProductForm.controls.productId.disabled;
       });
     }
   }
@@ -63,11 +63,11 @@ export class AddProductsComponent {
   Save() {
     console.log(this.ProductForm.value);
     const product: IProduct = {
-      ProductId: this.ProductForm.value.ProductId!,
-      ProductName: this.ProductForm.value.ProductName!,
-      ProductDescription: this.ProductForm.value.ProductDescription!,
-      Price: this.ProductForm.value.Price!,
-      CategoryId: this.ProductForm.value.CategoryId!,
+      productId: this.ProductForm.value.productId!,
+      productName: this.ProductForm.value.productName!,
+      productDescription: this.ProductForm.value.productDescription!,
+      price: this.ProductForm.value.price!,
+      categoryId: this.ProductForm.value.categoryId!,
     };
     //Edit
 
@@ -83,11 +83,11 @@ export class AddProductsComponent {
         (result) => console.log(result)
         // {
         // this.ProductForm=this.builder.group({
-        //   ProductId:[0],
-        //   ProductName:['',[Validators.required]],
-        //   ProductDescription:['',[Validators.required]],
-        //   Price:[0,[Validators.required]],
-        //   CategoryId:[0],
+        //   productId:[0],
+        //   productName:['',[Validators.required]],
+        //   productDescription:['',[Validators.required]],
+        //   price:[0,[Validators.required]],
+        //   categoryId:[0],
         // }
       );
       console.log('success');

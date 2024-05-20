@@ -6,13 +6,14 @@ import { IProduct } from '../../models/Products.model';
 import { ProductService } from '../../services/products-service.service';
 import { MatIconModule } from '@angular/material/icon';
 import { ToastrService } from 'ngx-toastr';
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
     selector: 'List',
     standalone: true,
     templateUrl: './list-of-products.component.html',
     styleUrls: ['./list-of-products.component.css'],
-    imports: [MatTableModule, MatButtonModule, RouterLink, MatIconModule]
+    imports: [TooltipModule,MatTableModule, MatButtonModule, RouterLink, MatIconModule]
 })
 export class ListOfProductsComponent {
 
@@ -22,8 +23,13 @@ export class ListOfProductsComponent {
 
  
  productlist:IProduct[]=[];
+
+
+
+
 //  http=inject(ProductService);
- displayedColumns: string[] = ['ProductId', 'ProductName', 'ProductDescription', 'Price','CategoryId','Action'];
+ displayedColumns: string[] = ['productId', 'productName', 'productDescription', 'price','categoryId','Action'];
+  
  constructor(private http:ProductService) {}
  ngOnInit(){
   this.http.getAllProduct().subscribe((result:IProduct[])=>{this.productlist=result;
@@ -33,19 +39,22 @@ export class ListOfProductsComponent {
  }
 
 
- Edit(ProductId: number) {
-console.log(ProductId);
-this.router.navigateByUrl("/products/"+ProductId)
+ Edit(productId: number) {
+console.log(productId);
+this.router.navigateByUrl("/products/"+productId)
  }
 
- Delete(ProductId: number) {
-  this.http.deleteProduct(ProductId).subscribe(()=>{
+ Delete(productId: number) {
+  this.http.deleteProduct(productId).subscribe(()=>{
     console.log("deleted")
-    // this.productlist=this.productlist.filter(x=>x.ProductId!=ProductId)
+    // this.productlist=this.productlist.filter(x=>x.productId!=productId)
     this.ngOnInit();
     this.toaster.error("Record deleted Successfully")
   })
   }
+
+
+  
 
 
 }

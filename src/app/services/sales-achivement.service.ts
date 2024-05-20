@@ -20,20 +20,20 @@ export class SalesAchivementService {
   createSalesAchievement(salesAchievement: ISalesAchivement): Observable<any> {
     return this.http.post(this.SalesAchievementApiUrl, salesAchievement)
   }
-  getSalesAchivenemt(SalesAchievementId: number) {
+  getSalesAchivenemt(salesAchievementId: number) {
     return this.http.get<ISalesAchivement>(
-      this.SalesAchievementApiUrl + SalesAchievementId
+      this.SalesAchievementApiUrl + salesAchievementId
     );
   }
-  updateSalesAchievement(SalesAchievementId: number, SalesAchievement: ISalesAchivement) {
+  updateSalesAchievement(salesAchievementId: number, SalesAchievement: ISalesAchivement) {
     console.log(SalesAchievement)
     return this.http.put<ISalesAchivement>(
-      this.SalesAchievementApiUrl + SalesAchievementId,
+      this.SalesAchievementApiUrl + salesAchievementId,
       SalesAchievement
     );
   }
-  deleteSalesAchievement(SalesAchievementId: number) {
-    return this.http.delete(this.SalesAchievementApiUrl + SalesAchievementId);
+  deleteSalesAchievement(salesAchievementId: number) {
+    return this.http.delete(this.SalesAchievementApiUrl + salesAchievementId);
   }
 
 

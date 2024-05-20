@@ -1,6 +1,6 @@
 export interface ISalesTarget {
-    SalesTargetId: number;
-    TargetTaka: number;
-    ClosingDate: Date;
-    EmployeeId?: number;
+    salesTargetId: number;
+    targetTaka: number;
+    closingDate: Date;
+    employeeId?: number;
   }
