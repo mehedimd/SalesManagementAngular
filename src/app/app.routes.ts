@@ -88,10 +88,12 @@ export const routes: Routes = [
   // end rifat
 
   {path:'employee',component:ListOfEmployeeComponent},
-  {path:'add-employee',component:AddEmployeeComponent},
+  {path:'employee/add',component:AddEmployeeComponent},
+  {path:'employee/add/:id',component:AddEmployeeComponent},
 
   {path:'category',component:ListOfCategoryComponent},
-  {path:'add-category',component:AddCategoryComponent},
+  {path:'category/add',component:AddCategoryComponent},
+  {path:'category/add/:id',component:AddCategoryComponent},
 
   { path: '**', component: NotFoundComponent },
 ];
