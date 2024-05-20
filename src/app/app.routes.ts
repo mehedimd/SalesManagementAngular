@@ -21,10 +21,11 @@ import { OrderAddComponent } from './components/order-add/order-add.component';
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { authGuard } from './auth.guard';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: DashboardComponent },
+  { path: 'home', component: DashboardComponent },
   { path: 'pharmacy', component: PharmacyComponent },
   { path: 'add', component: AddPharmacyComponent },
   { path: 'add/:id', component: AddPharmacyComponent },

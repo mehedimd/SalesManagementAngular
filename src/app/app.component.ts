@@ -20,14 +20,4 @@ import { HomeComponent } from './components/home/home.component';
 })
 export class AppComponent {
   title = 'myPharmacy';
-  isLoggedIn(): boolean {
-    const jwt = sessionStorage.getItem('jwtToken');
-    if (jwt != null) {
-      return false;
-    }
-    return true;
-  }
-  logout() {
-    sessionStorage.removeItem('jwtToken');
-  }
 }
