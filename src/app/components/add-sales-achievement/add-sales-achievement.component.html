@@ -1,79 +1,72 @@
-<div>
-  <div
-    style="
-      text-align: center;
-      width: 1050px;
-      height: 50px;
-      margin-top: 100px;
-      margin-bottom: 20px;
-      margin-left: 11.4%;
-      background-color: rgb(71, 55, 212);
-      opacity: 50px;
-      padding-top: 13px;
-    "
-  >
-    @if(isEdit) {
-    <h4 style="font-size: 30px; color: white">
-      <b><i>Edit Sales-Achievement</i></b>
-    </h4>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center mt-5">
+      <div class="bg-primary text-white p-3" style="width: 1050px;">
+        @if(isEdit) {
+        <h4 class="display-4">
+          <b><i>Edit Sales-Achievement</i></b>
+        </h4>
 
-    } @else {
-    <h4>
-      <b><i>Add Sales-Achievement</i></b>
-    </h4>
-    }
-  </div>
-  <form [formGroup]="SalesAchievementForm" (ngSubmit)="Save()">
-    <div class="example-container flex justify-center">
-      @if (isEdit) {
-      <mat-form-field>
-        <mat-label>SalesAchievement Id</mat-label>
-        <input matInput type="number" formControlName="ID" readonly />
-      </mat-form-field>
-      }@else{
-      <mat-form-field style="display: none">
-        <mat-label>SalesAchievement Id</mat-label>
-        <input matInput type="number" formControlName="ID" readonly />
-      </mat-form-field>
-      }
-
-      <mat-form-field>
-        <mat-label>Amount</mat-label>
-        <input matInput type="text" formControlName="Amount" />
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Select Sales Target</mat-label>
-        <mat-select formControlName="SalesTargetsId">
-          @for (item of AllTarget; track $index) {
-          <mat-option [value]="item.SalesTargetId">{{
-            item.TargetTaka
-          }}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
-
-      @if(isEdit) {
-      <div>
-        <button
-          mat-raised-button
-          color="primary"
-          [disabled]="!SalesAchievementForm.valid"
-        >
-          <mat-icon>update</mat-icon>Update
-        </button>
+        } @else {
+        <h4 class="display-4">
+          <b><i>Add Sales-Achievement</i></b>
+        </h4>
+        }
       </div>
-      } @else {
-      <div>
-        <button
-          mat-raised-button
-          color="primary"
-          [disabled]="!SalesAchievementForm.valid"
-        >
-          <mat-icon>save</mat-icon>Save
-        </button>
-      </div>
-      }
     </div>
-  </form>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <form [formGroup]="SalesAchievementForm" (ngSubmit)="Save()">
+        <div class="row">
+          <div class="col-md-6">
+            @if (isEdit) {
+            <div class="form-group">
+              <label for="id">SalesAchievement Id</label>
+              <input type="number" class="form-control" formControlName="id" readonly />
+            </div>
+            }
+
+            <div class="form-group">
+              <label for="amount">Amount</label>
+              <input type="text" class="form-control" formControlName="amount" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="salesTargetsId">Select Sales Target</label>
+              <mat-select class="form-control" formControlName="salesTargetsId">
+                @for (item of AllTarget; track $index) {
+                <mat-option [value]="item.salesTargetId">{{
+                  item.targetTaka
+                }}</mat-option>
+                }
+              </mat-select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            @if(isEdit) {
+            <button
+              mat-raised-button
+              color="primary"
+              [disabled]="!SalesAchievementForm.valid"
+            >
+              <mat-icon>update</mat-icon>Update
+            </button>
+            } @else {
+            <button
+              mat-raised-button
+              color="primary"
+              [disabled]="!SalesAchievementForm.valid"
+            >
+              <mat-icon>save</mat-icon>Save
+            </button>
+            }
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

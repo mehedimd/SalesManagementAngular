@@ -7,11 +7,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { ISalesTarget } from '../../models/SalesTarget.model';
 import { SalesTargetServiceService } from '../../services/sales-target-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { Employee } from '../../models/employee.model';
+import {TooltipModule } from 'primeng/tooltip';
 
 @Component({
   selector: 'app-list-of-sales-targets',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule, RouterLink, MatIconModule],
+  imports: [MatTableModule, MatButtonModule, RouterLink, MatIconModule,TooltipModule],
   templateUrl: './list-of-sales-targets.component.html',
   styleUrl: './list-of-sales-targets.component.css',
 })
@@ -19,12 +21,12 @@ export class ListOfSalesTargetsComponent {
   router = inject(Router);
   toaster = inject(ToastrService);
   salestargetlist: ISalesTarget[] = [];
-
+  employeelist:Employee[]=[];
   displayedColumns: string[] = [
-    'SalesTargetId',
-    'TargetTaka',
-    'ClosingDate',
-    'EmployeeId',
+    'salesTargetId',
+    'targetTaka',
+    'closingDate',
+    'employeeId',
     'Action',
   ];
   constructor(private http: SalesTargetServiceService) {}
@@ -35,13 +37,13 @@ export class ListOfSalesTargetsComponent {
     });
   }
 
-  EditSales(SalesTargetId: number) {
-    console.log(SalesTargetId);
-    this.router.navigateByUrl('/salestargets/' + SalesTargetId);
+  EditSales(salesTargetId: number) {
+    console.log(salesTargetId);
+    this.router.navigateByUrl('/salestargets/' + salesTargetId);
   }
 
-  Delete(SalesTargetId: number) {
-    this.http.deleteSalesTarget(SalesTargetId).subscribe(() => {
+  Delete(salesTargetId: number) {
+    this.http.deleteSalesTarget(salesTargetId).subscribe(() => {
       console.log('deleted');
       // this.productlist=this.productlist.filter(x=>x.ProductId!=ProductId)
       this.ngOnInit();

@@ -1,5 +1,5 @@
 export interface ISalesAchivement{
-    ID:number,
-    Amount:number,
-    SalesTargetsId:number
+    id:number,
+    amount:number,
+    salesTargetsId:number
 }

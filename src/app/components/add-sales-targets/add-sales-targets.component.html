@@ -1,59 +1,46 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form [formGroup]="SalesTargetForm" (ngSubmit)="Save()">
+          <fieldset>
+            <legend>@if(isEdit) { Edit Target } @else { Add Target }</legend>
+            <div class="form-group">
+              @if (isEdit) {
+                <label for="salesTargetId">SalesTarget Id</label>
+                <input type="number" class="form-control" formControlName="salesTargetId" readonly />
+              } 
+            </div>
+            <div class="form-group">
+              <label for="targetTaka">Target Taka</label>
+              <input type="text" class="form-control" formControlName="targetTaka" />
+            </div>
+            <div class="form-group">
+              <label for="closingDate">Closing Date</label>
+              <input type="date" class="form-control" formControlName="closingDate" />
+            </div>
+            <div class="form-group">
+              <label for="EmployeeId">EmployeeId</label>
+              <input type="number" class="form-control" formControlName="employeeId" />
+            </div>
+
+              
 
 
-<div>
-    <div style="text-align: center; width: 1050px; height: 50px; margin-top: 100px;margin-bottom: 20px;margin-left: 11.4%;  background-color: rgb(71, 55, 212);opacity: 50px; padding-top: 13px;">
-        @if(isEdit) {
-            <h4 style="font-size: 30px; color: white;"><b><i>Edit Target</i></b></h4>
-            
-        } @else {
-            <h4><b><i>Add Target</i></b></h4>
-        }
+
+
+            <div class="form-group">
+              @if(isEdit) {
+                <button type="submit" class="btn btn-primary" [disabled]="!SalesTargetForm.valid">
+                  <i class="material-icons">update</i> Update
+                </button>
+              } @else {
+                <button type="submit" class="btn btn-primary" [disabled]="!SalesTargetForm.valid">
+                  <i class="material-icons">save</i> Save
+                </button>
+              }
+            </div>
+          </fieldset>
+        </form>
+      </div>
     </div>
-    <form [formGroup]="SalesTargetForm" (ngSubmit)="Save()">
-        <div class="example-container flex justify-center" >
-            
-            @if (isEdit) 
-            {
-                <mat-form-field>
-                    <mat-label>SalesTarget Id</mat-label>
-                    <input matInput type="number" formControlName="SalesTargetId" readonly>
-                </mat-form-field>
-            }@else{
-                <mat-form-field style="display: none;">
-                    <mat-label>SalesTarget Id</mat-label>
-                    <input matInput type="number" formControlName="SalesTargetId" readonly>
-                </mat-form-field>
-            }
-
-
-            <mat-form-field>
-                <mat-label>Target Taka</mat-label>
-                <input matInput type="text" formControlName="TargetTaka">
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Closing Date</mat-label>
-                <input matInput type="date" formControlName="ClosingDate">
-            </mat-form-field>
-            
-
-            <mat-form-field>
-                <mat-label>EmployeeId</mat-label>
-                <input matInput type="number" formControlName="EmployeeId">
-            </mat-form-field>
-
-
-            @if(isEdit) {
-                <div>
-                    <button mat-raised-button color="primary" [disabled]="!SalesTargetForm.valid">
-                        <mat-icon>update</mat-icon>Update</button>
-                </div>
-            } @else {
-                <div>
-                    <button mat-raised-button color="primary" [disabled]="!SalesTargetForm.valid"><mat-icon>save</mat-icon>Save</button>
-                </div>
-            }
-        </div>
-    </form>
-</div>
-
+  </div>
