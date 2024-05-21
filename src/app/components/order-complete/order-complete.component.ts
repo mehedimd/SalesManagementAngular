@@ -33,6 +33,7 @@ export class OrderCompleteComponent implements OnInit {
     this.orderService.getOrderById(id).subscribe({
       next: (data) => {
         console.log(data);
+
         this.order = data.order;
         this.orderItems = data.orderItems;
       },

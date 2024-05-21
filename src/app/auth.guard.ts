@@ -3,11 +3,12 @@ import { CanActivateFn, Router } from '@angular/router';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
-  const jwt = sessionStorage.getItem('jwtToken');
+  const jwt = localStorage.getItem('jwtToken');
   if (jwt != null) {
+    console.log('rout gurd true');
     return true;
-  } else {
-    router.navigate(['/login']);
-    return false;
   }
+  console.log('rout gurd false');
+  router.navigate(['/login']);
+  return false;
 };
