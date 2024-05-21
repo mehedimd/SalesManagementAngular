@@ -16,8 +16,8 @@
             <th>Order Date</th>
             <th>Pharmacy</th>
             <th>Grand Total</th>
-            <th>Payment Total</th>
-            <th>Total Due</th>
+            <th>Approval</th>
+            <th>Delivery</th>
             <th>--Action--</th>
           </tr>
         </thead>
@@ -28,8 +28,15 @@
             <td>{{ item.orderDate.slice(0, 10) }}</td>
             <td>{{ item.pharmacyName }}</td>
             <td>{{ item.grandTotal }}</td>
-            <td>{{ item.paymentTotal }}</td>
-            <td>{{ item.totalDue }}</td>
+            @if(!item.isApproved){
+            <td class="text-warning">pending..</td>
+            }@else{
+            <td class="text-success">approved</td>
+            } @if(!item.isDelivered){
+            <td class="text-warning">pending..</td>
+            }@else{
+            <td class="text-success">approved</td>
+            }
             <td>
               <button
                 routerLink="/order/add/{{ item.orderId }}"

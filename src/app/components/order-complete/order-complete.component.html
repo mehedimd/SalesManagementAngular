@@ -1,3 +1,4 @@
+<p>order-complete works!</p>
 <div class="row g-2">
   <div class="col-md-10 offset-md-1">
     <h2 class="text-warning">Delivery Pending</h2>
@@ -11,13 +12,11 @@
             <th>Order Date</th>
             <th>Pharmacy</th>
             <th>Grand Total</th>
-            <th>Approval</th>
             <th>Delivery</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
-          @for(item of allOrderList; track item.orderId){ @if(!item.isDelivered
+          @for(item of allOrderList; track item.orderId){ @if(item.isDelivered
           && item.isApproved){
           <tr
             (click)="orderDetails(item.orderId)"
@@ -28,21 +27,7 @@
             <td>{{ item.orderDate.slice(0, 10) }}</td>
             <td>{{ item.pharmacyName }}</td>
             <td>{{ item.grandTotal }}</td>
-            @if(!item.isApproved){
-            <td class="text-warning">pending..</td>
-            }@else{
-            <td class="text-success">approved</td>
-            }
-            <td class="text-warning">pending..</td>
-            <td>
-              <button
-                type="button"
-                class="btn btn-success btn-sm"
-                (click)="approved(item.orderId)"
-              >
-                Delivery Confirm
-              </button>
-            </td>
+            <td class="text-success">Success</td>
           </tr>
           } }
         </tbody>
