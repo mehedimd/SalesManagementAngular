@@ -1,0 +1,41 @@
+<div class="row g-2">
+  <div class="col-md-10 offset-md-1">
+    <h2 class="text-warning">Pending Order</h2>
+  </div>
+  <div class="col-md-10 offset-md-1">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#Order No.</th>
+            <th>Order Date</th>
+            <th>Pharmacy</th>
+            <th>Grand Total</th>
+            <th>Approval</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(item of allOrderList; track item.orderId){ @if(!item.isApproved){
+          <tr>
+            <td>{{ item.orderNo }}</td>
+            <td>{{ item.orderDate.slice(0, 10) }}</td>
+            <td>{{ item.pharmacyName }}</td>
+            <td>{{ item.grandTotal }}</td>
+            <td class="text-warning">pending..</td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-success btn-sm"
+                (click)="approved(item.orderId)"
+              >
+                Approved
+              </button>
+            </td>
+          </tr>
+          } }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
