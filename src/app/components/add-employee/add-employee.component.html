@@ -48,9 +48,13 @@
             </mat-form-field>
 
             <mat-form-field>
-                <mat-label>Country</mat-label>
-                <input matInput type="text" formControlName="country">
-            </mat-form-field>
+                <mat-select placeholder="country" formControlName="country">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let item of Countrylist" [value]="item.name">
+                    {{item.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
 
             <mat-form-field>
                 <mat-label>City</mat-label>
@@ -68,14 +72,15 @@
             </mat-form-field>
 
       
+            <div style="padding-bottom: 20px;">
+            <mat-label *ngIf="!EmployeeForm.valid" style="color: red;">Gender</mat-label>
+            <mat-radio-group aria-label="Gender" formControlName="gender" >
+                <mat-radio-button value="Male">Male</mat-radio-button>
+                <mat-radio-button value="Female">Female</mat-radio-button>
+                <mat-radio-button value="Others">Others</mat-radio-button>
+              </mat-radio-group>
 
-            <mat-form-field>
-                <mat-label>Gender</mat-label>
-                <input matInput type="text" formControlName="gender">
-               
-            </mat-form-field>
-
-            
+            </div>
 
 
             @if(isEdit) {

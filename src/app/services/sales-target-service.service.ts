@@ -31,20 +31,20 @@ export class SalesTargetServiceService {
     //   })
     // );
   }
-  getSalesTaget(SalesTargetId: number) {
+  getSalesTaget(salesTargetId: number) {
     return this.http.get<ISalesTarget>(
-      this.SalesApiUrl + SalesTargetId
+      this.SalesApiUrl + salesTargetId
     );
   }
-  updateSalesTarget(SalesTargetId: number, SalesTarget: ISalesTarget) {
+  updateSalesTarget(salesTargetId: number, SalesTarget: ISalesTarget) {
     console.log(SalesTarget)
     return this.http.put<ISalesTarget>(
-      this.SalesApiUrl + SalesTargetId,
+      this.SalesApiUrl + salesTargetId,
       SalesTarget
     );
   }
-  deleteSalesTarget(SalesTargetId: number) {
-    return this.http.delete(this.SalesApiUrl + SalesTargetId);
+  deleteSalesTarget(salesTargetId: number) {
+    return this.http.delete(this.SalesApiUrl + salesTargetId);
   }
 
 

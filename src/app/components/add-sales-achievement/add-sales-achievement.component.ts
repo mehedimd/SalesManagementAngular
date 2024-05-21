@@ -32,7 +32,7 @@ import { ISalesAchivement } from '../../Models/SalesAchievement.model';
     ReactiveFormsModule,
     MatIconModule,
     MatDatepickerModule,
-    MatSelectModule,
+    MatSelectModule
   ],
   templateUrl: './add-sales-achievement.component.html',
   styleUrl: './add-sales-achievement.component.css',
@@ -50,22 +50,22 @@ export class AddSalesAchievementComponent {
 
   submitted = false;
   SalesAchievementForm = this.builder.group({
-    ID: [0],
-    Amount: [0, [Validators.required]],
-    SalesTargetsId: [0, [Validators.required]],
+    id: [0],
+    amount: [0, [Validators.required]],
+    salesTargetsId: [0, [Validators.required]],
   });
 
-  ID!: number;
+  id!: number;
   isEdit = false;
 
   ngOnInit() {
-    this.ID = this.route.snapshot.params['id'];
-    if (this.ID) {
+    this.id = this.route.snapshot.params['id'];
+    if (this.id) {
       this.isEdit = true;
-      this.service.getSalesAchivenemt(this.ID).subscribe((result) => {
+      this.service.getSalesAchivenemt(this.id).subscribe((result) => {
         console.log(result);
         this.SalesAchievementForm.patchValue(result);
-        this.SalesAchievementForm.controls.ID.disabled;
+        this.SalesAchievementForm.controls.id.disabled;
       });
     }
     // for binding target value in selectalist
@@ -78,16 +78,16 @@ export class AddSalesAchievementComponent {
   Save() {
     console.log(this.SalesAchievementForm.value);
     const SalesAchievement: ISalesAchivement = {
-      ID: this.SalesAchievementForm.value.ID!,
-      Amount: this.SalesAchievementForm.value.Amount!,
-      SalesTargetsId: this.SalesAchievementForm.value.SalesTargetsId!,
+      id: this.SalesAchievementForm.value.id!,
+      amount: this.SalesAchievementForm.value.amount!,
+      salesTargetsId: this.SalesAchievementForm.value.salesTargetsId!,
     };
     //Edit
 
     if (this.isEdit) {
       console.log(SalesAchievement);
       this.service
-        .updateSalesAchievement(this.ID, SalesAchievement)
+        .updateSalesAchievement(this.id, SalesAchievement)
         .subscribe(() => {
           console.log('Edit success');
           this.router.navigateByUrl('List-of-SalesAchievement');
@@ -96,9 +96,9 @@ export class AddSalesAchievementComponent {
     } else {
       this.service.createSalesAchievement(SalesAchievement).subscribe(() => {
         this.SalesAchievementForm = this.builder.group({
-          ID: [0],
-          Amount: [0, [Validators.required]],
-          SalesTargetsId: [0, [Validators.required]],
+          id: [0],
+          amount: [0, [Validators.required]],
+          salesTargetsId: [0, [Validators.required]],
         });
         console.log('success');
         this.router.navigateByUrl('List-of-SalesAchievement');

@@ -9,6 +9,9 @@ import { EmployeeService } from '../../services/employee.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Employee } from '../../models/employee.model';
+import {MatRadioModule} from '@angular/material/radio';
+import { CommonModule } from '@angular/common';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-add-employee',
@@ -19,7 +22,10 @@ import { Employee } from '../../models/employee.model';
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatDatepickerModule,],
+    MatDatepickerModule,
+    MatRadioModule,
+    MatSelectModule,
+  CommonModule],
   templateUrl: './add-employee.component.html',
   styleUrl: './add-employee.component.css'
 })
@@ -43,6 +49,17 @@ export class AddEmployeeComponent implements OnInit{
     gender: ['',[Validators.required]],
   });
   
+  Countrylist = [
+    {name: 'Bangladesh'},
+    {name: 'Canada'},
+    {name: 'Australia'},
+    {name: 'Belgium'},
+    {name: 'Denmark'},
+    {name: 'India'},
+    {name: 'Japan'},
+    {name: 'Pakistan'},
+  ];
+
   EmployeeId!:number;
   isEdit = false;
   

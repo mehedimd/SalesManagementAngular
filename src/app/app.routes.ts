@@ -26,6 +26,9 @@ import { authGuard } from './auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ListOfCategoryComponent } from './components/list-of-category/list-of-category.component';
 import { AddCategoryComponent } from './components/add-category/add-category.component';
+import { OrderPendingComponent } from './components/order-pending/order-pending.component';
+import { OrderDeliveryComponent } from './components/order-delivery/order-delivery.component';
+import { OrderCompleteComponent } from './components/order-complete/order-complete.component';
 
 export const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -44,56 +47,35 @@ export const routes: Routes = [
   { path: 'order', component: OrderComponent, canActivate: [authGuard] },
   { path: 'order/add', component: OrderAddComponent },
   { path: 'order/add/:id', component: OrderAddComponent },
+  { path: 'pending-order', component: OrderPendingComponent },
+  { path: 'pending-delivery', component: OrderDeliveryComponent },
+  { path: 'order-completed', component: OrderCompleteComponent },
 
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
 
   // rifat
-  {
-    path: 'List',
-    component: ListOfProductsComponent,
-  },
-  {
-    path: 'add-products',
-    component: AddProductsComponent,
-  },
-  {
-    path: 'products/:id',
-    component: AddProductsComponent,
-  },
-  {
-    path: 'List-of-SalesTarget',
-    component: ListOfSalesTargetsComponent,
-  },
-  {
-    path: 'add-salestarget',
-    component: AddSalesTargetsComponent,
-  },
-  {
-    path: 'salestargets/:id',
-    component: AddSalesTargetsComponent,
-  },
-  {
-    path: 'List-of-SalesAchievement',
-    component: ListSalesAchievementComponent,
-  },
-  {
-    path: 'add-SalesAchievement',
-    component: AddSalesAchievementComponent,
-  },
-  {
-    path: 'SalesAchievement/:id',
-    component: AddSalesAchievementComponent,
-  },
+  {path: 'List',component: ListOfProductsComponent},
+  {path: 'add-products',component: AddProductsComponent},
+  {path: 'products/:id',component: AddProductsComponent},
+
+  {path: 'List-of-SalesTarget',component: ListOfSalesTargetsComponent},
+  {path: 'add-salestarget',component: AddSalesTargetsComponent,},
+  {path: 'salestargets/:id',component: AddSalesTargetsComponent},
+  
+  
+  {path: 'List-of-SalesAchievement',component: ListSalesAchievementComponent},
+  {path: 'add-SalesAchievement',component: AddSalesAchievementComponent},
+  {path: 'SalesAchievement/:id',component: AddSalesAchievementComponent},
   // end rifat
 
-  {path:'employee',component:ListOfEmployeeComponent},
-  {path:'employee/add',component:AddEmployeeComponent},
-  {path:'employee/add/:id',component:AddEmployeeComponent},
+  { path: 'employee', component: ListOfEmployeeComponent },
+  { path: 'employee/add', component: AddEmployeeComponent },
+  { path: 'employee/add/:id', component: AddEmployeeComponent },
 
-  {path:'category',component:ListOfCategoryComponent},
-  {path:'category/add',component:AddCategoryComponent},
-  {path:'category/add/:id',component:AddCategoryComponent},
+  { path: 'category', component: ListOfCategoryComponent },
+  { path: 'category/add', component: AddCategoryComponent },
+  { path: 'category/add/:id', component: AddCategoryComponent },
 
   { path: '**', component: NotFoundComponent },
 ];

@@ -18,15 +18,15 @@ export class ProductService {
   createProduct(product: IProduct): Observable<any> {
     return this.http.post(this.apiUrl, product);
   }
-  getProduct(ProductId: number) {
-    return this.http.get<IProduct>(this.apiUrl + ProductId);
+  getProduct(productId: number) {
+    return this.http.get<IProduct>(this.apiUrl + productId);
   }
 
-  updateProduct(ProductId: number, Product: IProduct) {
+  updateProduct(productId: number, Product: IProduct) {
     console.log(Product);
-    return this.http.put<IProduct>(this.apiUrl + ProductId, Product);
+    return this.http.put<IProduct>(this.apiUrl + productId, Product);
   }
-  deleteProduct(ProductId: number) {
-    return this.http.delete(this.apiUrl + ProductId);
+  deleteProduct(productId: number) {
+    return this.http.delete(this.apiUrl + productId);
   }
 }

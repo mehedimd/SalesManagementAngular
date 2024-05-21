@@ -7,11 +7,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { ToastrService } from 'ngx-toastr';
 import { SalesAchivementService } from '../../services/sales-achivement.service';
 import { ISalesAchivement } from '../../Models/SalesAchievement.model';
+import { ISalesTarget } from '../../models/SalesTarget.model';
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
   selector: 'app-list-sales-achievement',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule, RouterLink, MatIconModule],
+  imports: [MatTableModule, MatButtonModule, RouterLink, MatIconModule,TooltipModule],
   templateUrl: './list-sales-achievement.component.html',
   styleUrl: './list-sales-achievement.component.css',
 })
@@ -23,10 +25,11 @@ export class ListSalesAchievementComponent {
   constructor(private http: SalesAchivementService) {}
 
   salesachievementlist: ISalesAchivement[] = [];
+  salestarget:ISalesTarget[]=[]
   // AllTarget:ISalesTarget[]=[];
   // SalesTargetId!:number;
 
-  displayedColumns: string[] = ['ID', 'Amount', 'SalesTargetsId', 'Action'];
+  displayedColumns: string[] = ['id', 'amount', 'salesTargetsId', 'Action'];
 
   ngOnInit() {
     this.http
@@ -47,8 +50,8 @@ export class ListSalesAchievementComponent {
     this.router.navigateByUrl('/SalesAchievement/' + SalesAchievementId);
   }
 
-  Delete(ID: number) {
-    this.http.deleteSalesAchievement(ID).subscribe(() => {
+  Delete(id: number) {
+    this.http.deleteSalesAchievement(id).subscribe(() => {
       console.log('deleted');
       // this.productlist=this.productlist.filter(x=>x.ProductId!=ProductId)
       this.ngOnInit();

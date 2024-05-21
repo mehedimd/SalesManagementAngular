@@ -11,6 +11,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class OrderPendingComponent implements OnInit {
   allOrderList: any = [];
+  order: any = {};
+  orderItems: any = [];
 
   constructor(
     private orderService: OrderService,
@@ -43,6 +45,18 @@ export class OrderPendingComponent implements OnInit {
           },
           error: (e) => console.log(e),
         });
+      },
+      error: (e) => console.log(e),
+    });
+  }
+
+  // order details
+  orderDetails(id: any) {
+    this.orderService.getOrderById(id).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.order = data.order;
+        this.orderItems = data.orderItems;
       },
       error: (e) => console.log(e),
     });
