@@ -219,14 +219,23 @@
             class="rounded-circle"
           />
           <span class="d-none d-md-block dropdown-toggle ps-2"
-            >K. Anderson</span
+            >@if(user != null && role != null){
+            <span>{{ user }}</span>
+            }@else {
+            <span>Anonomous </span>
+            }</span
           > </a
         ><!-- End Profile Iamge Icon -->
 
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
           <li class="dropdown-header">
-            <h6>Kevin Anderson</h6>
-            <span>Web Designer</span>
+            @if(user != null && role != null){
+            <h6>{{ user }}</h6>
+            <span>{{ role }}</span>
+            }@else {
+            <h6>Anonomous User</h6>
+            <span>anonomous</span>
+            }
           </li>
           <li>
             <hr class="dropdown-divider" />
@@ -321,19 +330,19 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/pending-order">
+      <a class="nav-link" routerLink="/order/pending-order">
         <i class="bi bi-layout-text-window-reverse"></i
         ><span>Pending Order</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/pending-delivery">
+      <a class="nav-link" routerLink="/order/pending-delivery">
         <i class="bi bi-layout-text-window-reverse"></i
         ><span>Pending Delivery</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/order-completed">
+      <a class="nav-link" routerLink="/order/order-completed">
         <i class="bi bi-layout-text-window-reverse"></i
         ><span>Completed Order</span>
       </a>
