@@ -1,0 +1,94 @@
+
+
+<div>
+    <div style="text-align: center; width: 1050px; height: 50px; margin-top: 100px;margin-bottom: 20px;margin-left: 11.4%;  background-color: rgb(242, 241, 248);opacity: 50px; padding-top: 13px;">
+        @if(isEdit) {
+            <h4 style="font-size: 30px; color: white;"><b><i>Edit Employee</i></b></h4>
+            
+        } @else {
+            <h4><b><i>Add Employee</i></b></h4>
+        }
+    </div>
+    <form [formGroup]="EmployeeForm" (ngSubmit)="Save()">
+        <div class="example-container flex justify-center" >
+            
+            @if (isEdit) 
+            {
+                <mat-form-field>
+                    <mat-label>Employee Id</mat-label>
+                    <input matInput type="number" formControlName="employeeId" readonly>
+                </mat-form-field>
+            }@else{
+                <mat-form-field style="display: none;">
+                    <mat-label>Employee Id</mat-label>
+                    <input matInput type="number" formControlName="employeeId" readonly>
+                </mat-form-field>
+            }
+
+
+            <mat-form-field>
+                <mat-label>Employee Name</mat-label>
+                <input matInput type="text" formControlName="employeeName">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Designation</mat-label>
+                <input matInput type="text" formControlName="designation">
+            </mat-form-field>
+            
+
+            <mat-form-field>
+                <mat-label>Phone Number</mat-label>
+                <input matInput type="text" formControlName="phoneNumber">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Email Address</mat-label>
+                <input matInput type="email" formControlName="emailAddress">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Country</mat-label>
+                <input matInput type="text" formControlName="country">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>City</mat-label>
+                <input matInput type="text" formControlName="city">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>State</mat-label>
+                <input matInput type="text" formControlName="state">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Postal Code</mat-label>
+                <input matInput type="text" formControlName="postalCode">
+            </mat-form-field>
+
+      
+
+            <mat-form-field>
+                <mat-label>Gender</mat-label>
+                <input matInput type="text" formControlName="gender">
+               
+            </mat-form-field>
+
+            
+
+
+            @if(isEdit) {
+                <div>
+                    <button mat-raised-button color="primary" [disabled]="!EmployeeForm.valid">
+                        <mat-icon>update</mat-icon>Update</button>
+                </div>
+            } @else {
+                <div>
+                    <button mat-raised-button color="primary" [disabled]="!EmployeeForm.valid"><mat-icon>save</mat-icon>Save</button>
+                </div>
+            }
+        </div>
+    </form>
+</div>
+

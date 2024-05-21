@@ -35,7 +35,8 @@ export class OrderComponent implements OnInit {
   deleteOrder(id: any) {
     this.orderService.delete(id).subscribe({
       next: (res) => {
-        this.toastr.warning(res, 'Order');
+        console.log(res);
+        this.toastr.warning(res.message, 'Order');
         this.ngOnInit();
       },
       error: (e) => console.log(e),

@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3 shadow-lg p-5 my-5">
+    <h2 class="text-center text-primary">LOGIN FORM</h2>
+    <form [formGroup]="newLoginForm" (ngSubmit)="login()">
+      <div class="form-group">
+        <label for="user">Username or Email</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="userName"
+          id="user"
+          [class]="{ 'is-invalid': newLoginForm.controls.userName.errors }"
+        />
+        @if(newLoginForm.controls.userName.errors){
+        <div class="invalid-feedback">
+          @if(newLoginForm.controls.userName.errors['required']){
+          <div>username required</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="form-group">
+        <label for="pass">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="password"
+          id="pass"
+          [class]="{ 'is-invalid': newLoginForm.controls.password.errors }"
+        />
+        @if(newLoginForm.controls.password.errors){
+        <div class="invalid-feedback">
+          @if (newLoginForm.controls.password.errors) {
+          <div>password is required</div>
+          }
+        </div>
+        }
+      </div>
+      <button
+        class="btn btn-primary mt-2"
+        (click)="login()"
+        [disabled]="newLoginForm.invalid"
+      >
+        LOGIN
+      </button>
+      <div class="mt-2">
+        <span class="text-danger">{{ finalError }}</span>
+      </div>
+      <div class="mt-2">
+        <span>new to this company? &#x2B9E;&#x2B9E;</span>
+        <a class="btn btn-outline-dark btn-sm ms-2" routerLink="/register"
+          >REGISTER NOW</a
+        >
+      </div>
+    </form>
+  </div>
+</div>

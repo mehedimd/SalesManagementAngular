@@ -1,0 +1,47 @@
+<div class="row g-2">
+    <div class="col-md-10 offset-md-1">
+      <input
+        type="button"
+        class="btn btn-primary"
+        routerLink="/employee/add"
+        value="Create Employee"
+      />
+    </div>
+    <div class="col-md-10 offset-md-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Employee Name</th>
+            <th>Designation</th>
+            <th>Phone Number</th>
+            <th>Email Address</th>
+            <th>Address</th>
+            <th>Gender</th>
+            <th>--Action--</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(item of allEmployeeList; track item.employeeId){
+          <tr>
+            <td>{{ item.employeeId}}</td>
+            <td>{{ item.employeeName}}</td>
+            <td>{{ item.designation}}</td>
+            <td>{{ item.phoneNumber }}</td>
+            <td>{{ item.emailAddress}}</td>
+            <td>{{ item.address}}</td>
+            <td>{{ item.gender}}</td>
+            <td>
+              <button
+                (click)="deleteEmployee(item.employeeId)"
+                class="btn btn-danger btn-sm"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>

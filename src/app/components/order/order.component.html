@@ -8,38 +8,46 @@
     />
   </div>
   <div class="col-md-10 offset-md-1">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>#Order No.</th>
-          <th>Order Date</th>
-          <th>Pharmacy</th>
-          <th>Grand Total</th>
-          <th>Payment Total</th>
-          <th>Total Due</th>
-          <th>--Action--</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for(item of allOrderList; track item.orderId){
-        <tr>
-          <td>{{ item.orderNo }}</td>
-          <td>{{ item.orderDate }}</td>
-          <td>{{ item.pharmacyName }}</td>
-          <td>{{ item.grandTotal }}</td>
-          <td>{{ item.paymentTotal }}</td>
-          <td>{{ item.totalDue }}</td>
-          <td>
-            <button
-              (click)="deleteOrder(item.orderId)"
-              class="btn btn-danger btn-sm"
-            >
-              Delete
-            </button>
-          </td>
-        </tr>
-        }
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#Order No.</th>
+            <th>Order Date</th>
+            <th>Pharmacy</th>
+            <th>Grand Total</th>
+            <th>Payment Total</th>
+            <th>Total Due</th>
+            <th>--Action--</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(item of allOrderList; track item.orderId){
+          <tr>
+            <td>{{ item.orderNo }}</td>
+            <td>{{ item.orderDate.slice(0, 10) }}</td>
+            <td>{{ item.pharmacyName }}</td>
+            <td>{{ item.grandTotal }}</td>
+            <td>{{ item.paymentTotal }}</td>
+            <td>{{ item.totalDue }}</td>
+            <td>
+              <button
+                routerLink="/order/add/{{ item.orderId }}"
+                class="btn btn-warning btn-sm"
+              >
+                Edit
+              </button>
+              <button
+                (click)="deleteOrder(item.orderId)"
+                class="btn btn-danger btn-sm ms-lg-2 mt-2 mt-lg-0"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

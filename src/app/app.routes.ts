@@ -15,13 +15,21 @@ import { AddSalesTargetsComponent } from './components/add-sales-targets/add-sal
 import { ListSalesAchievementComponent } from './components/list-sales-achievement/list-sales-achievement.component';
 import { AddSalesAchievementComponent } from './components/add-sales-achievement/add-sales-achievement.component';
 // end rifat
-import { HomeComponent } from './components/home/home.component';
+
 import { OrderComponent } from './components/order/order.component';
 import { OrderAddComponent } from './components/order-add/order-add.component';
+import { ListOfEmployeeComponent } from './components/list-of-employee/list-of-employee.component';
+import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
+import { RegisterComponent } from './components/authentication/register/register.component';
+import { LoginComponent } from './components/authentication/login/login.component';
+import { authGuard } from './auth.guard';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ListOfCategoryComponent } from './components/list-of-category/list-of-category.component';
+import { AddCategoryComponent } from './components/add-category/add-category.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: DashboardComponent },
+  { path: 'home', component: DashboardComponent },
   { path: 'pharmacy', component: PharmacyComponent },
   { path: 'add', component: AddPharmacyComponent },
   { path: 'add/:id', component: AddPharmacyComponent },
@@ -33,8 +41,12 @@ export const routes: Routes = [
   { path: 'unitConversion', component: UnitConversionComponent },
   { path: 'addUnitConversion', component: AddUnitConversionComponent },
   { path: 'addUnitConversion/:id', component: AddUnitConversionComponent },
-  { path: 'order', component: OrderComponent },
+  { path: 'order', component: OrderComponent, canActivate: [authGuard] },
   { path: 'order/add', component: OrderAddComponent },
+  { path: 'order/add/:id', component: OrderAddComponent },
+
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
 
   // rifat
   {
@@ -74,6 +86,14 @@ export const routes: Routes = [
     component: AddSalesAchievementComponent,
   },
   // end rifat
+
+  {path:'employee',component:ListOfEmployeeComponent},
+  {path:'employee/add',component:AddEmployeeComponent},
+  {path:'employee/add/:id',component:AddEmployeeComponent},
+
+  {path:'category',component:ListOfCategoryComponent},
+  {path:'category/add',component:AddCategoryComponent},
+  {path:'category/add/:id',component:AddCategoryComponent},
 
   { path: '**', component: NotFoundComponent },
 ];
