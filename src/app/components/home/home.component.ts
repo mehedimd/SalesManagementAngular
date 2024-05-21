@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { HomeComponentRifat } from '../homeRifat/home.component';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
@@ -10,11 +10,21 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  // for user profile
+  user: any;
+  role: any;
   constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    console.log('home component called');
+    this.user = localStorage.getItem('user');
+    this.role = localStorage.getItem('role');
+  }
+
   // for login and logOut
   isLoggedIn(): boolean {
-    const jwt = sessionStorage.getItem('jwtToken');
+    const jwt = localStorage.getItem('jwtToken');
     if (jwt != null) {
       return false;
     }
@@ -22,8 +32,11 @@ export class HomeComponent {
   }
   // logout
   logout() {
-    sessionStorage.removeItem('jwtToken');
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('role');
+    localStorage.removeItem('user');
     this.router.navigate(['/login']);
+    this.ngOnInit();
   }
   // for Toggle side nav
   sidenavToggle(): any {

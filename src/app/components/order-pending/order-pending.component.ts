@@ -37,7 +37,7 @@ export class OrderPendingComponent implements OnInit {
     this.orderService.getOrderById(id).subscribe({
       next: (data) => {
         data.order.isApproved = true;
-        this.orderService.orderItems = data.orderitems;
+        this.orderService.orderItems = data.orderItems;
         this.orderService.updateOrder(id, data.order).subscribe({
           next: (data) => {
             this.toastr.success('approved', 'Order');
