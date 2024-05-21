@@ -4,6 +4,8 @@ export class OrderItem {
   productName!: string;
   quantity!: number;
   orderId!: number;
+  unitId!: number;
+  unitName!: string;
   price!: number;
   total!: number;
 }

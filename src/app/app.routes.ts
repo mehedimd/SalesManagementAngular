@@ -15,7 +15,7 @@ import { AddSalesTargetsComponent } from './components/add-sales-targets/add-sal
 import { ListSalesAchievementComponent } from './components/list-sales-achievement/list-sales-achievement.component';
 import { AddSalesAchievementComponent } from './components/add-sales-achievement/add-sales-achievement.component';
 // end rifat
-import { HomeComponent } from './components/home/home.component';
+
 import { OrderComponent } from './components/order/order.component';
 import { OrderAddComponent } from './components/order-add/order-add.component';
 import { ListOfEmployeeComponent } from './components/list-of-employee/list-of-employee.component';
@@ -24,6 +24,11 @@ import { RegisterComponent } from './components/authentication/register/register
 import { LoginComponent } from './components/authentication/login/login.component';
 import { authGuard } from './auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ListOfCategoryComponent } from './components/list-of-category/list-of-category.component';
+import { AddCategoryComponent } from './components/add-category/add-category.component';
+import { OrderPendingComponent } from './components/order-pending/order-pending.component';
+import { OrderDeliveryComponent } from './components/order-delivery/order-delivery.component';
+import { OrderCompleteComponent } from './components/order-complete/order-complete.component';
 
 export const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -42,6 +47,9 @@ export const routes: Routes = [
   { path: 'order', component: OrderComponent, canActivate: [authGuard] },
   { path: 'order/add', component: OrderAddComponent },
   { path: 'order/add/:id', component: OrderAddComponent },
+  { path: 'pending-order', component: OrderPendingComponent },
+  { path: 'pending-delivery', component: OrderDeliveryComponent },
+  { path: 'order-completed', component: OrderCompleteComponent },
 
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
@@ -61,8 +69,13 @@ export const routes: Routes = [
   {path: 'SalesAchievement/:id',component: AddSalesAchievementComponent},
   // end rifat
 
-  {path:'employee',component:ListOfEmployeeComponent},
-  {path:'add-employee',component:AddEmployeeComponent},
+  { path: 'employee', component: ListOfEmployeeComponent },
+  { path: 'employee/add', component: AddEmployeeComponent },
+  { path: 'employee/add/:id', component: AddEmployeeComponent },
+
+  { path: 'category', component: ListOfCategoryComponent },
+  { path: 'category/add', component: AddCategoryComponent },
+  { path: 'category/add/:id', component: AddCategoryComponent },
 
   { path: '**', component: NotFoundComponent },
 ];

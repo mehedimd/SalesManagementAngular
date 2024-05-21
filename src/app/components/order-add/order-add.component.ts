@@ -5,7 +5,12 @@ import {
   MatDialogModule,
 } from '@angular/material/dialog';
 import { Order } from '../../models/order.model';
-import { FormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { PharmacyService } from '../../services/pharmacy.service';
 import { Pharmacy } from '../../models/pharmacy.model';
 import { OrderItemComponent } from '../order-item/order-item.component';
@@ -15,25 +20,22 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-order-add',
   standalone: true,
-  imports: [MatDialogModule, FormsModule, RouterLink],
+  imports: [MatDialogModule, FormsModule, RouterLink, ReactiveFormsModule],
   templateUrl: './order-add.component.html',
   styleUrl: './order-add.component.css',
 })
 export class OrderAddComponent implements OnInit {
-  orderMaster: Order = {
-    orderId: 0,
-    orderNo: 10000 + Math.floor(Math.random() * 1000 + 500),
-    orderDate: new Date().toISOString().slice(0, 10),
-    grandTotal: 0,
-    paymentTotal: 0,
-    totalDue: 0,
-    pharmacyId: 0,
-  };
+
+  orderForm: any = this.formBuilder.group({
+    orderId: [0],
+    orderNo: [10000 + Math.floor(Math.random() * 1000 + 500)],
+    orderDate: [new Date().toISOString().slice(0, 10)],
+    grandTotal: [0],
+    pharmacyId: ['', [Validators.required]],
+  });
   pharmacyList: Pharmacy[] = [];
 
   activeRouteId: any;
-  isValid: boolean = true;
-  isAnyItem: boolean = true;
 
   constructor(
     private dialog: MatDialog,
@@ -41,7 +43,8 @@ export class OrderAddComponent implements OnInit {
     public orderService: OrderService,
     private router: Router,
     private toastr: ToastrService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder
   ) {}
   ngOnInit(): void {
     this.getAllPharmacy();
@@ -50,7 +53,7 @@ export class OrderAddComponent implements OnInit {
       this.orderService.getOrderById(this.activeRouteId).subscribe({
         next: (res) => {
           console.log(res);
-          this.orderMaster = res.order;
+          this.orderForm.patchValue(res.order);
           this.orderService.orderItems = res.orderItems;
         },
         error: (e) => console.error(e),
@@ -66,7 +69,8 @@ export class OrderAddComponent implements OnInit {
     });
   }
   //orderItem order Item dialog popup
-  addOrEditItems(itemIndex: any, orderId: number) {
+  addOrEditItems(itemIndex: any) {
+    let orderId = this.orderForm.value.orderId;
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
@@ -84,49 +88,39 @@ export class OrderAddComponent implements OnInit {
     console.log(id);
     this.orderService.orderItems.splice(id, 1);
     this.updateGrandTotal();
-    this.updateTotalDue();
   }
   // update Grand Total
   updateGrandTotal() {
-    this.orderMaster.grandTotal = this.orderService.orderItems.reduce(
-      (prev, current) => {
+    this.orderForm.patchValue({
+      grandTotal: this.orderService.orderItems.reduce((prev, current) => {
         return prev + current.total;
-      },
-      0
-    );
-    this.updateTotalDue();
+      }, 0),
+    });
   }
   // update due
-  updateTotalDue() {
-    this.orderMaster.totalDue =
-      this.orderMaster.grandTotal - this.orderMaster.paymentTotal;
-  }
+
   // Create Order
-  createOrder(orderId: any) {
-    this.isValid = true;
-    this.isAnyItem = true;
-    if (this.orderMaster.pharmacyId == 0) {
-      this.isValid = false;
-    } else if (this.orderService.orderItems.length == 0) {
-      this.isAnyItem = false;
+  createOrder() {
+    if (this.orderService.orderItems.length == 0) {
       this.toastr.warning('Please Order At Least 1 Item!', 'Order');
-    }
-    if (this.isValid && this.isAnyItem) {
-      if (orderId > 0) {
-        this.orderService.updateOrder(orderId, this.orderMaster).subscribe({
-          next: (res) => {
-            console.log(res);
-            this.toastr.success(res, 'Order');
-            this.router.navigate(['/order']);
-            this.resetOrderForm();
-          },
-          error: (e) => console.log(e),
-        });
+    } else {
+      if (this.orderForm.value.orderId > 0) {
+        this.orderService
+          .updateOrder(this.orderForm.value.orderId, this.orderForm.value)
+          .subscribe({
+            next: (res) => {
+              console.log(res);
+              this.toastr.success(res.message, 'Order');
+              this.router.navigate(['/order']);
+              this.resetOrderForm();
+            },
+            error: (e) => console.log(e),
+          });
       } else {
-        this.orderService.create(this.orderMaster).subscribe({
+        this.orderService.create(this.orderForm.value).subscribe({
           next: (res) => {
             console.log(res);
-            this.toastr.success(res, 'Order');
+            this.toastr.success(res.message, 'Order');
             this.router.navigate(['/order']);
             this.resetOrderForm();
           },
@@ -138,13 +132,11 @@ export class OrderAddComponent implements OnInit {
 
   // reset all input
   resetOrderForm() {
-    this.orderMaster = {
+    this.orderForm.patchValue = {
       orderId: 0,
       orderNo: 10000 + Math.floor(Math.random() * 1000 + 500),
       orderDate: '2024-02-04',
       grandTotal: 0,
-      paymentTotal: 0,
-      totalDue: 0,
       pharmacyId: 0,
     };
     this.orderService.orderItems = [];

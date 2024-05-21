@@ -1,0 +1,92 @@
+<p>order-complete works!</p>
+<div class="row g-2">
+  <div class="col-md-10 offset-md-1">
+    <h2 class="text-warning">Delivery Pending</h2>
+  </div>
+  <div class="col-md-10 offset-md-1">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#Order No.</th>
+            <th>Order Date</th>
+            <th>Pharmacy</th>
+            <th>Grand Total</th>
+            <th>Delivery</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(item of allOrderList; track item.orderId){ @if(item.isDelivered
+          && item.isApproved){
+          <tr
+            (click)="orderDetails(item.orderId)"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            <td>{{ item.orderNo }}</td>
+            <td>{{ item.orderDate.slice(0, 10) }}</td>
+            <td>{{ item.pharmacyName }}</td>
+            <td>{{ item.grandTotal }}</td>
+            <td class="text-success">Success</td>
+          </tr>
+          } }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- // modal order details  -->
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Pharmacy : {{ order.pharmacyName }}
+        </h1>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+          <thead class="bg-danger">
+            <tr>
+              <td>Product</td>
+              <td>Quantity</td>
+              <td>Total</td>
+            </tr>
+          </thead>
+          <tbody>
+            @for(item of orderItems; track item.id){
+            <tr>
+              <td>
+                {{ item.productName }}
+              </td>
+              <td>{{ item.quantity }} {{ item.unitName }}</td>
+              <td>
+                {{ item.price }}
+              </td>
+            </tr>
+            }
+            <tr>
+              <td colspan="2">Grand Total:</td>
+
+              <td>{{ order.grandTotal }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
