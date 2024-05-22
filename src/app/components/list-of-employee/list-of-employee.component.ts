@@ -34,7 +34,7 @@ export class ListOfEmployeeComponent implements OnInit{
   }
   // Delete Employee
   deleteEmployee(id: any) {
-    debugger
+    
     this.employeeService.deleteEmployees(id).subscribe({
       next:(res)=> {
         console.log(res);
