@@ -1,7 +1,7 @@
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
   <div class="d-flex align-items-center justify-content-between">
-    <a href="index.html" class="logo d-flex align-items-center">
+    <a routerLink="/" class="logo d-flex align-items-center">
       <img src="assets/img/mylogo.png" alt="" />
       <span class="d-none d-lg-block">TeamMehedi</span>
     </a>
@@ -10,11 +10,7 @@
   <!-- End Logo -->
 
   <div class="search-bar">
-    <form
-      class="search-form d-flex align-items-center"
-      method="POST"
-      action="#"
-    >
+    <form class="search-form d-flex align-items-center" method="POST">
       <input
         type="text"
         name="query"
@@ -242,23 +238,17 @@
           </li>
 
           <li>
-            <a
-              class="dropdown-item d-flex align-items-center"
-              href="users-profile.html"
-            >
+            <a class="dropdown-item d-flex align-items-center" routerLink="/">
               <i class="bi bi-person"></i>
               <span>My Profile</span>
             </a>
           </li>
-          <li>
+          <!-- <li>
             <hr class="dropdown-divider" />
           </li>
 
           <li>
-            <a
-              class="dropdown-item d-flex align-items-center"
-              href="users-profile.html"
-            >
+            <a class="dropdown-item d-flex align-items-center" routerLink="/">
               <i class="bi bi-gear"></i>
               <span>Account Settings</span>
             </a>
@@ -268,26 +258,33 @@
           </li>
 
           <li>
-            <a
-              class="dropdown-item d-flex align-items-center"
-              href="pages-faq.html"
-            >
+            <a class="dropdown-item d-flex align-items-center" routerLink="/">
               <i class="bi bi-question-circle"></i>
               <span>Need Help?</span>
             </a>
-          </li>
+          </li> -->
           <li>
             <hr class="dropdown-divider" />
           </li>
 
           <li>
+            @if(!isLoggedIn()){
             <a
               class="dropdown-item d-flex align-items-center btn"
               (click)="logout()"
             >
-              <i class="bi bi-box-arrow-right"></i>
+              <i class="bi bi-box-arrow-left"></i>
               <span>Sign Out</span>
             </a>
+            }@else {
+            <a
+              class="dropdown-item d-flex align-items-center btn"
+              (click)="login()"
+            >
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Login</span>
+            </a>
+            }
           </li>
         </ul>
         <!-- End Profile Dropdown Items -->
@@ -310,11 +307,13 @@
     </li>
     <!-- End Dashboard Nav -->
 
+    @if(role == 'manager'){
     <li class="nav-item">
       <a class="nav-link" routerLink="/List">
         <i class="bi bi-menu-button-wide"></i><span>Products</span>
       </a>
     </li>
+    }
     <!-- End Components Nav -->
 
     <li class="nav-item">
@@ -322,38 +321,56 @@
         <i class="bi bi-journal-text"></i><span>Pharmacy</span>
       </a>
     </li>
-    <!-- End Forms Nav -->
+    <!-- End Pharmacy Nav -->
 
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/order">
-        <i class="bi bi-layout-text-window-reverse"></i><span>Orders</span>
+    <li class="">
+      <a
+        class="nav-link collapsed btn"
+        data-bs-target="#components-nav"
+        data-bs-toggle="collapse"
+      >
+        <i class="bi bi-menu-button-wide"></i><span>Order</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
       </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/order/pending-order">
-        <i class="bi bi-layout-text-window-reverse"></i
-        ><span>Pending Order</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/order/pending-delivery">
-        <i class="bi bi-layout-text-window-reverse"></i
-        ><span>Pending Delivery</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/order/order-completed">
-        <i class="bi bi-layout-text-window-reverse"></i
-        ><span>Completed Order</span>
-      </a>
+      <ul
+        id="components-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/order">
+            <i class="bi bi-layout-text-window-reverse"></i
+            ><span>All Order</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/order/pending-order">
+            <i class="bi bi-layout-text-window-reverse"></i
+            ><span>Pending Order</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/order/pending-delivery">
+            <i class="bi bi-layout-text-window-reverse"></i
+            ><span>Pending Delivery</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/order/order-completed">
+            <i class="bi bi-layout-text-window-reverse"></i
+            ><span>Completed Order</span>
+          </a>
+        </li>
+      </ul>
     </li>
     <!-- End Tables Nav -->
-
+    @if(role == 'manager'){
     <li class="nav-item">
       <a class="nav-link" routerLink="/unit">
         <i class="bi bi-bar-chart"></i><span>Unit</span>
       </a>
     </li>
+    }
 
     <li class="nav-item">
       <a class="nav-link" routerLink="/List-of-SalesTarget">
@@ -370,27 +387,14 @@
 
     <!-- End Icons Nav -->
 
-    
-
-    
-
-
-
-
     <!-- End Icons Nav -->
 
     <li class="nav-heading">Pages</li>
 
-    <li class="nav-item">
-      <a class="nav-link">
-        <i class="bi bi-person"></i>
-        <span>Profile</span>
-      </a>
-    </li>
     <!-- End Profile Page Nav -->
 
     <li class="nav-item">
-      <a class="nav-link">
+      <a class="nav-link" routerLink="/">
         <i class="bi bi-question-circle"></i>
         <span>F.A.Q</span>
       </a>
@@ -398,7 +402,7 @@
     <!-- End F.A.Q Page Nav -->
 
     <li class="nav-item">
-      <a class="nav-link">
+      <a class="nav-link" routerLink="/">
         <i class="bi bi-envelope"></i>
         <span>Contact</span>
       </a>

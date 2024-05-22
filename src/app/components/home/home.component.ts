@@ -3,6 +3,7 @@ import { MatCardModule } from '@angular/material/card';
 import { HomeComponentRifat } from '../homeRifat/home.component';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('home component called');
+
     this.user = localStorage.getItem('user');
     this.role = localStorage.getItem('role');
   }
@@ -35,8 +37,12 @@ export class HomeComponent implements OnInit {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('role');
     localStorage.removeItem('user');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
     this.ngOnInit();
+  }
+  // login
+  login() {
+    this.router.navigate(['/login']);
   }
   // for Toggle side nav
   sidenavToggle(): any {

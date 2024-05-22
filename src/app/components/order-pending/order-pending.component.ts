@@ -13,6 +13,7 @@ export class OrderPendingComponent implements OnInit {
   allOrderList: any = [];
   order: any = {};
   orderItems: any = [];
+  role: any;
 
   constructor(
     private orderService: OrderService,
@@ -20,6 +21,7 @@ export class OrderPendingComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.getAllOrderList();
+    this.role = localStorage.getItem('role');
   }
   // get all order List
   getAllOrderList() {

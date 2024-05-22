@@ -75,6 +75,7 @@
             >
               pending..
             </td>
+            @if(role == 'sr'){
             <td>
               <button
                 type="button"
@@ -84,6 +85,9 @@
                 Delivery Confirm
               </button>
             </td>
+            }@else {
+            <td></td>
+            }
           </tr>
           } }
         </tbody>

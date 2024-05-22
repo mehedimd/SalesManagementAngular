@@ -54,6 +54,7 @@
             >
               pending..
             </td>
+            @if(role == 'manager'){
             <td>
               <button
                 type="button"
@@ -63,6 +64,9 @@
                 Approved
               </button>
             </td>
+            }@else {
+            <td></td>
+            }
           </tr>
           } }
         </tbody>
