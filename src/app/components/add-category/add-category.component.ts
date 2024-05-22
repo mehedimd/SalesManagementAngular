@@ -51,7 +51,6 @@ export class AddCategoryComponent implements OnInit {
   }
 
   Save() {
-    debugger
     console.log(this.CategoryForm.value);
     const category: Icategories = {
       categoryId: this.CategoryForm.value.categoryId!,
