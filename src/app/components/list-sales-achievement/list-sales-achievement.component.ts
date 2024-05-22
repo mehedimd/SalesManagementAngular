@@ -9,6 +9,7 @@ import { SalesAchivementService } from '../../services/sales-achivement.service'
 import { ISalesAchivement } from '../../Models/SalesAchievement.model';
 import { ISalesTarget } from '../../models/SalesTarget.model';
 import { TooltipModule } from 'primeng/tooltip';
+import { SalesTargetServiceService } from '../../services/sales-target-service.service';
 
 @Component({
   selector: 'app-list-sales-achievement',
@@ -20,16 +21,15 @@ import { TooltipModule } from 'primeng/tooltip';
 export class ListSalesAchievementComponent {
   router = inject(Router);
   toaster = inject(ToastrService);
-  // target=inject(SalesTargetServiceService)
+  target_srv=inject(SalesTargetServiceService)
 
   constructor(private http: SalesAchivementService) {}
 
   salesachievementlist: ISalesAchivement[] = [];
-  salestarget:ISalesTarget[]=[]
-  // AllTarget:ISalesTarget[]=[];
-  // SalesTargetId!:number;
+  AllTarget:ISalesTarget[]=[];
+  
 
-  displayedColumns: string[] = ['id', 'amount', 'salesTargetsId', 'Action'];
+  displayedColumns: string[] = ['id', 'amount', 'TargetTaka', 'Action'];
 
   ngOnInit() {
     this.http
@@ -38,12 +38,19 @@ export class ListSalesAchievementComponent {
         this.salesachievementlist = result;
         console.log(this.salesachievementlist);
 
-        // this.target.getAllSalesTargets().subscribe(result=>{
-        //   this.AllTarget=result
-        //   console.log(result)
-        // })
+        this.target_srv.getAllSalesTargets().subscribe(result=>{
+          this.AllTarget=result
+          console.log(this.AllTarget)
+        })
       });
   }
+
+  getTargetTaka(salesTargetId:number) :number{
+    const Target= this.AllTarget.find(t=> t.salesTargetId === salesTargetId)
+    return Target? Target.targetTaka : 0;
+  }
+
+  
 
   Edit(SalesAchievementId: number) {
     console.log(SalesAchievementId);

@@ -14,6 +14,9 @@ import { IProduct } from '../../models/Products.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ToastrService } from 'ngx-toastr';
+import { Icategories } from '../../models/icategories';
+import { MatSelectModule } from '@angular/material/select';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-add-products',
@@ -27,6 +30,7 @@ import { ToastrService } from 'ngx-toastr';
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
+    MatSelectModule
   ],
 })
 export class AddProductsComponent {
@@ -35,6 +39,10 @@ export class AddProductsComponent {
   router = inject(Router);
   route = inject(ActivatedRoute);
   toaster = inject(ToastrService);
+  catagory_srv=inject(CategoryService)
+  Catagories:Icategories[]=[];
+  singlecatagory:Icategories | undefined;
+
 
   submitted = false;
   ProductForm = this.builder.group({
@@ -58,6 +66,10 @@ export class AddProductsComponent {
         this.ProductForm.controls.productId.disabled;
       });
     }
+    //binding 
+    this.catagory_srv.getAllCategory().subscribe((result)=>{
+      this.Catagories=result
+    })
   }
 
   Save() {
@@ -81,14 +93,7 @@ export class AddProductsComponent {
     } else {
       this.service.createProduct(product).subscribe(
         (result) => console.log(result)
-        // {
-        // this.ProductForm=this.builder.group({
-        //   productId:[0],
-        //   productName:['',[Validators.required]],
-        //   productDescription:['',[Validators.required]],
-        //   price:[0,[Validators.required]],
-        //   categoryId:[0],
-        // }
+        
       );
       console.log('success');
       this.router.navigateByUrl('List');
@@ -96,8 +101,5 @@ export class AddProductsComponent {
     }
   }
 
-  //   this.service.createProduct(product).subscribe(() => {
-  //     console.log("success");
-  //     this.router.navigateByUrl("\List")
-  // });
+  
 }

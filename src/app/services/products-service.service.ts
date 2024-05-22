@@ -22,10 +22,16 @@ export class ProductService {
     return this.http.get<IProduct>(this.apiUrl + productId);
   }
 
-  updateProduct(productId: number, Product: IProduct) {
-    console.log(Product);
-    return this.http.put<IProduct>(this.apiUrl + productId, Product);
+  
+
+  updateProduct(productId: number, product: IProduct) {
+    console.log(product)
+    return this.http.put<IProduct>(
+      this.apiUrl + productId,
+      product
+    );
   }
+
   deleteProduct(productId: number) {
     return this.http.delete(this.apiUrl + productId);
   }

@@ -15,7 +15,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ToastrService } from 'ngx-toastr';
 import { SalesAchivementService } from '../../services/sales-achivement.service';
-// import { ISalesAchivement } from '../../models/SalesAchievement.model';
 import { SalesTargetServiceService } from '../../services/sales-target-service.service';
 import { ISalesTarget } from '../../models/SalesTarget.model';
 import { MatSelectModule } from '@angular/material/select';
