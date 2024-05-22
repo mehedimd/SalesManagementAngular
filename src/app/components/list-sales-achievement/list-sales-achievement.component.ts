@@ -58,4 +58,6 @@ export class ListSalesAchievementComponent {
       this.toaster.error('Record deleted Successfully');
     });
   }
+
+  
 }
