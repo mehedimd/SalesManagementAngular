@@ -17,16 +17,44 @@
         </thead>
         <tbody>
           @for(item of allOrderList; track item.orderId){ @if(!item.isApproved){
-          <tr
-            (click)="orderDetails(item.orderId)"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
-            <td>{{ item.orderNo }}</td>
-            <td>{{ item.orderDate.slice(0, 10) }}</td>
-            <td>{{ item.pharmacyName }}</td>
-            <td>{{ item.grandTotal }}</td>
-            <td class="text-warning">pending..</td>
+          <tr>
+            <td
+              (click)="orderDetails(item.orderId)"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              {{ item.orderNo }}
+            </td>
+            <td
+              (click)="orderDetails(item.orderId)"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              {{ item.orderDate.slice(0, 10) }}
+            </td>
+            <td
+              (click)="orderDetails(item.orderId)"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              {{ item.pharmacyName }}
+            </td>
+            <td
+              (click)="orderDetails(item.orderId)"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              {{ item.grandTotal }}
+            </td>
+            <td
+              (click)="orderDetails(item.orderId)"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              class="text-warning"
+            >
+              pending..
+            </td>
+            @if(role == 'manager'){
             <td>
               <button
                 type="button"
@@ -36,6 +64,9 @@
                 Approved
               </button>
             </td>
+            }@else {
+            <td></td>
+            }
           </tr>
           } }
         </tbody>

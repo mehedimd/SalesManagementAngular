@@ -14,12 +14,15 @@ export class OrderDeliveryComponent implements OnInit {
   order: any = {};
   orderItems: any = [];
 
+  role: any;
+
   constructor(
     private orderService: OrderService,
     private toastr: ToastrService
   ) {}
   ngOnInit(): void {
     this.getAllOrderList();
+    this.role = localStorage.getItem('role');
   }
   // get all order List
   getAllOrderList() {
@@ -37,7 +40,7 @@ export class OrderDeliveryComponent implements OnInit {
     this.orderService.getOrderById(id).subscribe({
       next: (data) => {
         data.order.isDelivered = true;
-        this.orderService.orderItems = data.orderitems;
+        this.orderService.orderItems = data.orderItems;
         this.orderService.updateOrder(id, data.order).subscribe({
           next: (data) => {
             this.toastr.success('Delivery Completed', 'Order');

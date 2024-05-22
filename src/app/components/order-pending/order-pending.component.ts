@@ -13,6 +13,7 @@ export class OrderPendingComponent implements OnInit {
   allOrderList: any = [];
   order: any = {};
   orderItems: any = [];
+  role: any;
 
   constructor(
     private orderService: OrderService,
@@ -20,6 +21,7 @@ export class OrderPendingComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.getAllOrderList();
+    this.role = localStorage.getItem('role');
   }
   // get all order List
   getAllOrderList() {
@@ -37,7 +39,7 @@ export class OrderPendingComponent implements OnInit {
     this.orderService.getOrderById(id).subscribe({
       next: (data) => {
         data.order.isApproved = true;
-        this.orderService.orderItems = data.orderitems;
+        this.orderService.orderItems = data.orderItems;
         this.orderService.updateOrder(id, data.order).subscribe({
           next: (data) => {
             this.toastr.success('approved', 'Order');

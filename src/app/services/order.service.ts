@@ -13,7 +13,7 @@ export class OrderService {
   orderItems: OrderItem[] = [];
   constructor(private http: HttpClient) {}
   // header
-  t = sessionStorage.getItem('jwtToken');
+  t = localStorage.getItem('jwtToken');
   header = new HttpHeaders({
     'Content-Type': 'application/json',
     Accept: 'application/json',

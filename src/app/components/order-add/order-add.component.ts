@@ -25,7 +25,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './order-add.component.css',
 })
 export class OrderAddComponent implements OnInit {
-
   orderForm: any = this.formBuilder.group({
     orderId: [0],
     orderNo: [10000 + Math.floor(Math.random() * 1000 + 500)],
@@ -47,8 +46,16 @@ export class OrderAddComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
   ngOnInit(): void {
+    this.resetOrderForm();
+    // get all pharmacy
     this.getAllPharmacy();
+    // for edit  get id by snapshot route
     this.activeRouteId = this.route.snapshot.params['id'];
+    this.getEditFormValue();
+  }
+
+  // for edit patch value to form
+  getEditFormValue() {
     if (this.activeRouteId > 0) {
       this.orderService.getOrderById(this.activeRouteId).subscribe({
         next: (res) => {
@@ -132,13 +139,13 @@ export class OrderAddComponent implements OnInit {
 
   // reset all input
   resetOrderForm() {
-    this.orderForm.patchValue = {
+    this.orderForm.patchValue({
       orderId: 0,
       orderNo: 10000 + Math.floor(Math.random() * 1000 + 500),
-      orderDate: '2024-02-04',
+      orderDate: new Date().toISOString().slice(0, 10),
       grandTotal: 0,
-      pharmacyId: 0,
-    };
+      pharmacyId: '',
+    });
     this.orderService.orderItems = [];
   }
 }
