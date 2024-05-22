@@ -12,12 +12,16 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class OrderComponent implements OnInit {
   allOrderList: any = [];
+  order: any = {};
+  orderItems: any = [];
+  getUserRole: any;
   constructor(
     private orderService: OrderService,
     private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
+    this.getUserRole = localStorage.getItem('role');
     this.getAllOrderList();
   }
 
@@ -38,6 +42,18 @@ export class OrderComponent implements OnInit {
         console.log(res);
         this.toastr.warning(res.message, 'Order');
         this.ngOnInit();
+      },
+      error: (e) => console.log(e),
+    });
+  }
+
+  // order details
+  orderDetails(id: any) {
+    this.orderService.getOrderById(id).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.order = data.order;
+        this.orderItems = data.orderItems;
       },
       error: (e) => console.log(e),
     });
