@@ -16,6 +16,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ToastrService } from 'ngx-toastr';
 import { Employee } from '../../models/employee.model';
 import { MatSelectModule } from '@angular/material/select';
+import { EmployeeService } from '../../services/employee.service';
 @Component({
   selector: 'app-add-sales-targets',
   standalone: true,
@@ -37,6 +38,10 @@ export class AddSalesTargetsComponent {
   router = inject(Router);
   route = inject(ActivatedRoute);
   toaster = inject(ToastrService);
+  employee_srv=inject(EmployeeService)
+
+  
+
   submitted = false;
   SalesTargetForm = this.builder.group({
     salesTargetId: [0],
@@ -45,12 +50,11 @@ export class AddSalesTargetsComponent {
     employeeId: [0],
   });
 
-  Employeelist:Employee[]=[];
+  employeeList:Employee[]=[];
   salesTargetId!: number;
   isEdit = false;
 
   ngOnInit() {
-    console.log(this.Employeelist)
     this.salesTargetId = this.route.snapshot.params['id'];
     if (this.salesTargetId) {
       this.isEdit = true;
@@ -60,6 +64,9 @@ export class AddSalesTargetsComponent {
         this.SalesTargetForm.controls.salesTargetId.disabled;
       });
     }
+    this.employee_srv.getAllEmployee().subscribe((result)=>{
+      this.employeeList=result;
+    })
   }
 
   Save() {
