@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { ToastrService } from 'ngx-toastr';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-list-of-category',
@@ -11,7 +11,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './list-of-category.component.css'
 })
 export class ListOfCategoryComponent implements OnInit {
-
+  router=inject(Router)
+  toaster=inject(ToastrService)
   
   allCategorylist: any = [];
   constructor(
@@ -40,9 +41,14 @@ export class ListOfCategoryComponent implements OnInit {
         //this.toastr.warning(res,'category');
         console.log('this is warning', res);
         this.ngOnInit();
+        this.toaster.error("Record deleted Successfully");
       },
       error: (e) => console.log(e),
     });
   }
+  Edit(productId: number) {
+    console.log(productId);
+    this.router.navigateByUrl("/category/add/"+productId)
+     }
 
 }

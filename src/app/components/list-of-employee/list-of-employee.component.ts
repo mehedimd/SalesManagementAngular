@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,11 +11,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './list-of-employee.component.css'
 })
 export class ListOfEmployeeComponent implements OnInit{
-
+  router=inject(Router)
+  toaster=inject(ToastrService)
   allEmployeeList: any = [];
   constructor(
-    private employeeService: EmployeeService,
-    private toastr: ToastrService
+    private employeeService: EmployeeService
   ) {}
 
   ngOnInit(): void {
@@ -34,13 +34,20 @@ export class ListOfEmployeeComponent implements OnInit{
   }
   // Delete Employee
   deleteEmployee(id: any) {
+    
     this.employeeService.deleteEmployees(id).subscribe({
       next:(res)=> {
+        console.log(res);
         //this.toastr.warning(res,'Employee');
-        console.log('this is warning', res);
+        //console.log('this is warning', res);
         this.ngOnInit();
+        this.toaster.error("Record deleted Successfully");
       },
       error: (e) => console.log(e),
     });
   }
+  Edit(productId: number) {
+    console.log(productId);
+    this.router.navigateByUrl("/employee/add/"+productId)
+     }
 }

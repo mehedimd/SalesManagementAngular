@@ -7,12 +7,13 @@
         value="Create Category"
       />
     </div>
-    <div class="col-md-10 offset-md-1">
+    <div class="col-md-6 offset-md-1">
       <table class="table">
         <thead>
           <tr>
             <th>ID</th>
             <th>Category Name</th>
+            <th>--Action--</th>
           </tr>
         </thead>
         <tbody>
@@ -22,8 +23,14 @@
             <td>{{ item.categoryName}}</td>
             <td>
               <button
+              (click)="Edit(item.categoryId)"
+              class="btn btn-primary btn-sm"
+            >
+              Edit
+            </button>
+              <button
                 (click)="deleteCategory(item.categoryId)"
-                class="btn btn-danger btn-sm"
+                class="btn btn-danger btn-sm ms-md-2 mt-2 mt-lg-0"
               >
                 Delete
               </button>
