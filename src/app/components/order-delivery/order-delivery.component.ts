@@ -14,12 +14,15 @@ export class OrderDeliveryComponent implements OnInit {
   order: any = {};
   orderItems: any = [];
 
+  role: any;
+
   constructor(
     private orderService: OrderService,
     private toastr: ToastrService
   ) {}
   ngOnInit(): void {
     this.getAllOrderList();
+    this.role = localStorage.getItem('role');
   }
   // get all order List
   getAllOrderList() {
