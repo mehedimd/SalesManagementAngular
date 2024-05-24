@@ -69,6 +69,7 @@ export class AddCategoryComponent implements OnInit {
         });
     }
     else {
+      
       this.service.createIcategories(category).subscribe(() => {
         this.CategoryForm = this.builder.group({
           categoryId: [0],

@@ -42,6 +42,7 @@ export class AddEmployeeComponent implements OnInit{
     designation: ['', [Validators.required]],
     phoneNumber: ['',[Validators.required]],
     emailAddress: ['',[Validators.required]],
+    address:['',[Validators.required]],
     country: ['',[Validators.required]],
     city: ['',[Validators.required]],
     state: ['',[Validators.required]],
@@ -63,18 +64,23 @@ export class AddEmployeeComponent implements OnInit{
   EmployeeId!:number;
   isEdit = false;
   
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.EmployeeId=this.route.snapshot.params['id'];
     if (this.EmployeeId){
       this.isEdit = true;
-      this.service.getEmployee(this.EmployeeId).subscribe((result)=>{
-        console.log(result);
-        this.EmployeeForm.patchValue(result);
+      this.service.getEmployee(this.EmployeeId).subscribe({
+        next:(res)=>{
+        console.log(res);
+        this.EmployeeForm.patchValue(res);
         this.EmployeeForm.controls.employeeId.disabled;
+        },
+        error:(e)=>{
+          console.log(e);
+        },
       });
     }
-  }
-
+    }
+  
   Save() {
     console.log(this.EmployeeForm.value);
     const employee: Employee = {
@@ -90,36 +96,32 @@ export class AddEmployeeComponent implements OnInit{
       gender: this.EmployeeForm.value.gender!,
       address:'',
     };
-    employee.address=(`${employee.state},${employee.city}-${employee.postalCode},${employee.country}`);
+    employee.address=(`${this.EmployeeForm.value.address!},${employee.city}-${employee.postalCode}`);
     //edit
-  
     if (this.isEdit) {
       console.log(employee);
       this.service
         .updateEmployee(this.EmployeeId, employee)
-        .subscribe(() => {
+        .subscribe({
+          next:(res)=>{
           console.log('Edit success');
           this.router.navigateByUrl('employee');
           this.toaster.info('Record Updated Successfully');
+          },
+          error:(e)=>console.log(e),
         });
     }
     else {
-      this.service.createEmployee(employee).subscribe(() => {
-        this.EmployeeForm = this.builder.group({
-          employeeId: [0],
-    employeeName: ['', [Validators.required]],
-    designation: ['', [Validators.required]],
-    phoneNumber: ['',[Validators.required]],
-    emailAddress: ['',[Validators.required]],
-    country: ['',[Validators.required]],
-    city: ['',[Validators.required]],
-    state: ['',[Validators.required]],
-    postalCode: ['',[Validators.required]],
-    gender: ['',[Validators.required]],
-        });
-        console.log('success');
-        this.router.navigateByUrl('employee');
-        this.toaster.success('Record created Successfully');
+      this.service.createEmployee(employee).subscribe({
+        next:(res)=>{
+          console.log(res);
+          this.router.navigateByUrl('employee');
+          this.toaster.success('Record created Successfully');
+        },
+        error:(e)=>{
+          console.log(e);
+        },
+       
       });
     }
 
