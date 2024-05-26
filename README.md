@@ -39,7 +39,9 @@ only manager can approve this order and manager's panel show this approve button
 ![pending-order](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/cd7b225e-4f50-4090-8ad0-f08572b5ca9d)
 only delivery man can approve the delivery complete  and only delivery man's panel show delivery complete button
 ![pending-delivery](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/9ca9a12a-3f85-4a33-ae39-2a1a0fd0f673)
+after delivey man mark as delivery complete . then order goes to here and show all delivery complete order.
 ![completed order](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/6481f01c-a71b-4d6f-be51-d1c520f28e01)
+when we click any order row. all order details shows like this.
 ![show order item details](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/fa1e0595-253e-4d18-b39b-35363b01f86e)
 
 
