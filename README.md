@@ -28,6 +28,7 @@
     5.Only Manager Can Create Product
     6.Only Manager can Approve Pending Order.
     7.Only Delivery Man Can Submit Order Successfull after delivery complete.
+![order-add](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/dd4a535b-7eca-4e3d-a14d-9ab947f0585d)
 
     
   GitHub Project Link: https://github.com/mehedimd/SalesManagementAngular
