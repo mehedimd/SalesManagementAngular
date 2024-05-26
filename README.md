@@ -1,5 +1,6 @@
 # Project Details
 🔷🔶GitHub API Link: https://github.com/mehedimd/SalesManagementFinalWebApi
+
 🔴🔴	Pharmaceutical Company’s Order Management System🔴🔴
 
   🛑 Technology Use:  
@@ -47,6 +48,7 @@ when we click any order row. all order details shows like this.
 
 
   GitHub Project Link: https://github.com/mehedimd/SalesManagementAngular
+  
   GitHub API Link: https://github.com/mehedimd/SalesManagementFinalWebApi
 
 # MyPharmacy
