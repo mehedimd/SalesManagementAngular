@@ -32,6 +32,17 @@ Order Now:
 ![order-add](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/dd4a535b-7eca-4e3d-a14d-9ab947f0585d)
 Order Items:
 ![order-item 2](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/fb899e18-9565-486c-8714-7ca981bbcf3a)
+all order list where
+![order item list](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/fcba7ef4-2ead-4141-a4a8-2cd0639d8726)
+![all order list](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/3730397b-c023-4866-b272-f071663aa163)
+only manager can approve this order and manager's panel show this approve button only. and after manager approve the order approved order not showing in the all order list. because after order approved by manager this order can't edit/update/deletable.
+![pending-order](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/cd7b225e-4f50-4090-8ad0-f08572b5ca9d)
+only delivery man can approve the delivery complete  and only delivery man's panel show delivery complete button
+![pending-delivery](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/9ca9a12a-3f85-4a33-ae39-2a1a0fd0f673)
+![completed order](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/6481f01c-a71b-4d6f-be51-d1c520f28e01)
+![show order item details](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/fa1e0595-253e-4d18-b39b-35363b01f86e)
+
+
 
   GitHub Project Link: https://github.com/mehedimd/SalesManagementAngular
   GitHub API Link: https://github.com/mehedimd/SalesManagementFinalWebApi
