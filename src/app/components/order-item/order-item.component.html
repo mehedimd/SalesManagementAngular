@@ -33,6 +33,26 @@
       </div>
 
       <div class="form-group col-md-6">
+        <label>In Stock</label>
+        <input
+          class="form-control"
+          type="text"
+          [value]="singleStock.quantity ?? 0"
+          readonly
+        />
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Price</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="price"
+          readonly
+        />
+      </div>
+
+      <div class="form-group col-md-6">
         <label>Unit</label>
         <select
           class="form-select"
@@ -58,16 +78,6 @@
           }
         </div>
         }
-      </div>
-
-      <div class="form-group col-md-6">
-        <label>Price</label>
-        <input
-          class="form-control"
-          type="text"
-          formControlName="price"
-          readonly
-        />
       </div>
 
       <div class="form-group col-md-6">
