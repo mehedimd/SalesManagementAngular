@@ -8,7 +8,6 @@ import {
 import { LoginService } from '../../../services/authentication/login.service';
 import { Router, RouterLink } from '@angular/router';
 
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -35,6 +34,7 @@ export class LoginComponent {
         localStorage.setItem('jwtToken', res.token);
         localStorage.setItem('role', res.role);
         localStorage.setItem('user', res.applicationUser.userName);
+        window.location.reload();
         this.router.navigate(['/']);
       },
       error: (e) => (this.finalError = e.error.error),

@@ -22,8 +22,8 @@
           </tr>
         </thead>
         <tbody>
-          @for(item of allOrderList; track item.orderId){
-          @if(!item.isDelivered){
+          @for(item of allOrderList; track item.orderId){ @if(!item.isDelivered
+          && !item.isApproved){
           <tr>
             <td
               (click)="orderDetails(item.orderId)"
