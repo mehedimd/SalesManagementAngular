@@ -32,9 +32,28 @@ import { OrderCompleteComponent } from './components/order-complete/order-comple
 export const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'home', component: DashboardComponent },
-  { path: 'pharmacy', component: PharmacyComponent },
-  { path: 'add', component: AddPharmacyComponent },
-  { path: 'add/:id', component: AddPharmacyComponent },
+  // lazy loading standalone component
+  {
+    path: 'pharmacy',
+    loadComponent: () =>
+      import('./components/pharmacy/pharmacy.component').then(
+        (c) => c.PharmacyComponent
+      ),
+  },
+  {
+    path: 'add',
+    loadComponent: () =>
+      import('./components/add-pharmacy/add-pharmacy.component').then(
+        (c) => c.AddPharmacyComponent
+      ),
+  },
+  {
+    path: 'add/:id',
+    loadComponent: () =>
+      import('./components/add-pharmacy/add-pharmacy.component').then(
+        (c) => c.AddPharmacyComponent
+      ),
+  },
 
   { path: 'unit', component: UnitComponent },
   { path: 'addUnit', component: UnitAddComponent },

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../services/order.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxPrintService } from 'ngx-print';
+import { PrintOptions } from 'ngx-print';
 
 @Component({
   selector: 'app-order-pending',
@@ -17,11 +19,20 @@ export class OrderPendingComponent implements OnInit {
 
   constructor(
     private orderService: OrderService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private printService: NgxPrintService
   ) {}
   ngOnInit(): void {
     this.getAllOrderList();
     this.role = localStorage.getItem('role');
+  }
+  // print section
+  PrintMe() {
+    const printOption: PrintOptions = new PrintOptions({
+      printSectionId: 'invoice',
+      printTitle: 'INVOICE',
+    });
+    this.printService.print(printOption);
   }
   // get all order List
   getAllOrderList() {
