@@ -52,7 +52,11 @@ after delivey man mark as delivery complete . then order goes to here and show a
 ![completed order](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/6481f01c-a71b-4d6f-be51-d1c520f28e01)
 when we click any order row. all order details shows like this.
 ![show order item details](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/fa1e0595-253e-4d18-b39b-35363b01f86e)
+when goes to order pending section and click any order then popup menu shows print button.
+![print button popup](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/07828449-7a9e-4899-b50c-0bcff01ca9fb)
 
+Click Print Button then show print option
+![print popup](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/878f3e00-6249-4d73-ba8e-9221cc5b4798)
 
 
   GitHub Project Link: https://github.com/mehedimd/SalesManagementAngular
