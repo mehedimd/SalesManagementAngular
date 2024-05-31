@@ -21,6 +21,7 @@
   •	SSMS 
    
   🛑 Project Description:
+  
     1.First SR collected the order from Pharmacy. Then the orders go to the pending order list.
     
     2.After the manager approves the order from the pending order, the order is designated for delivery, and the order goes to the delivery list.
