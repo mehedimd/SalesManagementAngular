@@ -16,7 +16,7 @@
           </tr>
         </thead>
         <tbody>
-          @for(item of allOrderList; track item.orderId){ @if(!item.isApproved){
+          @for(item of allOrderList; track item.orderId){
           <tr>
             <td
               (click)="orderDetails(item.orderId)"
@@ -50,9 +50,10 @@
               (click)="orderDetails(item.orderId)"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
-              class="text-warning"
             >
-              pending..
+              @if(!item.isApproved){
+              <span class="text-warning"> pending... </span> }@else {
+              <span class="text-success"> approved </span> }
             </td>
             @if(role == 'manager'){
             <td>
@@ -68,7 +69,7 @@
             <td></td>
             }
           </tr>
-          } }
+          }
         </tbody>
       </table>
     </div>
@@ -125,7 +126,134 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
+        <!-- for print -->
+        <button class="btn btn-warning" (click)="PrintMe()">Print</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Invoice / Bill -->
+<div id="invoice" style="display: none">
+  <div class="row">
+    <div class="col-md-12 forHeader">
+      <hr
+        style="border: none; height: 15px; background: orange; margin-bottom: 0"
+      />
+      <h1 style="color: orange; margin-top: 0">Invoice</h1>
+      <div style="width: 100%">
+        <div style="display: flex">
+          <div style="width: 60%">
+            <span><strong>Square Pharmaceutical Ltd.</strong></span
+            ><br />
+            <span>Gulshan-2, Dhaka, Bangladesh</span><br />
+            <span>cell: 01974587458</span><br />
+            <span>website: squarepharma.com</span>
+          </div>
+          <div style="width: 40%">
+            <span>Order No: {{ order.orderNo }}</span
+            ><br />
+            <span>Order Date: {{ order.orderDate }}</span>
+          </div>
+        </div>
+        <hr />
+        <div>
+          <h5>Billed To: {{ order.pharmacyName }}</h5>
+        </div>
+        <div>
+          <table style="width: 100%; border-collapse: collapse">
+            <thead>
+              <tr>
+                <td
+                  style="
+                    border: 1px solid #dddddd;
+                    text-align: left;
+                    padding: 8px;
+                  "
+                >
+                  Product
+                </td>
+                <td
+                  style="
+                    border: 1px solid #dddddd;
+                    text-align: left;
+                    padding: 8px;
+                  "
+                >
+                  Quantity
+                </td>
+                <td
+                  style="
+                    border: 1px solid #dddddd;
+                    text-align: left;
+                    padding: 8px;
+                  "
+                >
+                  Total
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              @for(item of orderItems; track item.id){
+              <tr>
+                <td
+                  style="
+                    border: 1px solid #dddddd;
+                    text-align: left;
+                    padding: 8px;
+                  "
+                >
+                  {{ item.productName }}
+                </td>
+                <td
+                  style="
+                    border: 1px solid #dddddd;
+                    text-align: left;
+                    padding: 8px;
+                  "
+                >
+                  {{ item.quantity }} {{ item.unitName }}
+                </td>
+                <td
+                  style="
+                    border: 1px solid #dddddd;
+                    text-align: left;
+                    padding: 8px;
+                  "
+                >
+                  {{ item.price }}
+                </td>
+              </tr>
+              }
+              <tr>
+                <td
+                  colspan="2"
+                  style="
+                    border: 1px solid #dddddd;
+                    text-align: left;
+                    padding: 8px;
+                  "
+                >
+                  Grand Total:
+                </td>
+
+                <td
+                  style="
+                    border: 1px solid #dddddd;
+                    text-align: left;
+                    padding: 8px;
+                  "
+                >
+                  {{ order.grandTotal }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 forFooter">
+      <h3 style="color: orange">Thank you for buying our product</h3>
     </div>
   </div>
 </div>

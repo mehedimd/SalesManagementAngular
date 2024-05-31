@@ -11,6 +11,8 @@ import { MatDialogClose } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { OrderService } from '../../services/order.service';
 import { UnitService } from '../../services/unit.service';
+import { StockService } from '../../services/stock.service';
+import { Stock } from '../../models/stock.model';
 
 @Component({
   selector: 'app-order-item',
@@ -33,18 +35,22 @@ export class OrderItemComponent implements OnInit {
   });
   allProducts: any = [];
   allUnits: any = [];
+  singleStock: Stock = {};
   constructor(
     private orderService: OrderService,
     private productService: ProductService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<OrderItemComponent>,
     private formBuilder: FormBuilder,
-    private unitService: UnitService
+    private unitService: UnitService,
+    private stockService: StockService
   ) {}
   ngOnInit(): void {
     // all product get
     this.getAllProduct();
+    // all unit get
     this.getAllUnit();
+    // all stock get
     if (this.data.itemIndex != null) {
       this.orderItemForm.patchValue(
         this.orderService.orderItems[this.data.itemIndex]
@@ -69,6 +75,22 @@ export class OrderItemComponent implements OnInit {
       error: (e) => console.log(e),
     });
   }
+  // all Stock retrive
+  getAllStock(id: any) {
+    if (id != 0) {
+      this.stockService.getAll().subscribe({
+        next: (data) => {
+          this.singleStock = data.filter((f) => f.productId == id)[0];
+          console.log(this.singleStock);
+        },
+        error: (e) => console.log(e),
+      });
+    } else {
+      this.singleStock = {
+        quantity: 0,
+      };
+    }
+  }
   // price update
   updatePrice(e: any) {
     if (e.target.selectedIndex != 0) {
@@ -76,13 +98,21 @@ export class OrderItemComponent implements OnInit {
         price: this.allProducts[e.target.selectedIndex - 1].price,
         productName: this.allProducts[e.target.selectedIndex - 1].productName,
       });
+      // update total
       this.updateTotal();
+      // update stock qty
+      let pid = e.target.value;
+      this.getAllStock(pid);
     } else {
       this.orderItemForm.patchValue({
         price: 0,
         productName: '',
       });
+      // update total
       this.updateTotal();
+      // update stock qty
+      let pid = e.target.value;
+      this.getAllStock(pid);
     }
   }
   // update Total
