@@ -56,7 +56,7 @@ when goes to order pending section and click any order then popup menu shows pri
 ![print button popup](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/07828449-7a9e-4899-b50c-0bcff01ca9fb)
 
 Click Print Button then show print option
-![print popup](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/878f3e00-6249-4d73-ba8e-9221cc5b4798)
+![print popup](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/a9b44771-6d97-4de0-8444-c2596cfc0652)
 
 
   GitHub Project Link: https://github.com/mehedimd/SalesManagementAngular
