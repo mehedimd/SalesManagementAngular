@@ -21,14 +21,21 @@
   •	SSMS 
    
   🛑 Project Description:
-  How SR of a Pharmaceutical company collets orders from the Pharmacy and how to deliver the orders. We have separated the tasks of Manager, SR and Delivery man according to roles. Used    Asp.NET Core and JWT Token for Authentication.
     1.First SR collected the order from Pharmacy. Then the orders go to the pending order list.
+    
     2.After the manager approves the order from the pending order, the order is designated for delivery, and the order goes to the delivery list.
+    
     3.After delivering the order, the delivery man marks the order as delivery complete. Then the order goes to the complete order list.
+    
     4.Only SR can Place Order.
+    
     5.Only Manager Can Create Product
+    
     6.Only Manager can Approve Pending Order.
+    
     7.Only Delivery Man Can Submit Order Successfull after delivery complete.
+
+    8. Print Invoice by Manager
 Order Now:
 ![order-add](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/dd4a535b-7eca-4e3d-a14d-9ab947f0585d)
 Order Items:
