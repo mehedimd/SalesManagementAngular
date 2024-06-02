@@ -18,6 +18,25 @@
             </div>
           </div>
         </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="">PharmacyRoute</label>
+            <select
+              class="form-select"
+              (change)="ChangeRoute($event)"
+              [class.is-invalid]="!isRouteSelected"
+            >
+              <option value="">--Select Route--</option>
+              @for(route of pharmacyRouteList; track route.id){
+              <option [value]="route.id">
+                {{ route.routeName }}
+              </option>
+              }
+            </select>
+          </div>
+        </div>
+
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Pharmacy</label>
