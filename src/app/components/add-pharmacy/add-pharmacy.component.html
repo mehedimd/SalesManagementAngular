@@ -20,6 +20,16 @@
       }
 
       <div class="col-md-6">
+        <label for="route">Route</label>
+        <select id="route" class="form-select" [(ngModel)]="pharmacy.routeId">
+          <option value="">--Choose Route--</option>
+          @for(route of pharmacyRouteList; track route.id){
+          <option value="{{ route.id }}">{{ route.routeName }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="col-md-6">
         <label for="name" class="form-label">Pharmacy Name</label>
         <input
           [(ngModel)]="pharmacy.pharmacyName"
@@ -108,7 +118,13 @@
         }@else {
         <button (click)="addPharmacy()" class="btn btn-primary">Submit</button>
         }
-        <button type="button" class="btn btn-success ms-2 " routerLink="/pharmacy" >BACK TO LIST</button>
+        <button
+          type="button"
+          class="btn btn-success ms-2"
+          routerLink="/pharmacy"
+        >
+          BACK TO LIST
+        </button>
       </div>
     </div>
   </div>
