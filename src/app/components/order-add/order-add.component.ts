@@ -17,6 +17,8 @@ import { OrderItemComponent } from '../order-item/order-item.component';
 import { OrderService } from '../../services/order.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { PharmacyRouteService } from '../../services/pharmacy-route.service';
+import { PharmacyRoute } from '../../models/pharmacy-route.model';
 @Component({
   selector: 'app-order-add',
   standalone: true,
@@ -33,13 +35,14 @@ export class OrderAddComponent implements OnInit {
     pharmacyId: ['', [Validators.required]],
   });
   pharmacyList: Pharmacy[] = [];
-
+  pharmacyRoute: PharmacyRoute[] = [];
   activeRouteId: any;
 
   constructor(
     private dialog: MatDialog,
     private pharmacyService: PharmacyService,
     public orderService: OrderService,
+    private pharmacyRouteService: PharmacyRouteService,
     private router: Router,
     private toastr: ToastrService,
     private route: ActivatedRoute,
@@ -49,6 +52,9 @@ export class OrderAddComponent implements OnInit {
     this.resetOrderForm();
     // get all pharmacy
     this.getAllPharmacy();
+
+    // get all pharmacyRoute
+    this.getAllPharmacyRoute();
     // for edit  get id by snapshot route
     this.activeRouteId = this.route.snapshot.params['id'];
     this.getEditFormValue();
@@ -73,6 +79,17 @@ export class OrderAddComponent implements OnInit {
     this.pharmacyService.getAll().subscribe({
       next: (data) => (this.pharmacyList = data),
       error: (e) => console.warn(e),
+    });
+  }
+
+  // all pharmacyRoute list retrive
+  getAllPharmacyRoute() {
+    this.pharmacyRouteService.getAll().subscribe({
+      next: (data) => {
+        console.log(data);
+        this.pharmacyRoute = data;
+      },
+      error: (e) => console.log(e),
     });
   }
   //orderItem order Item dialog popup
