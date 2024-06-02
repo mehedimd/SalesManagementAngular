@@ -22,21 +22,18 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="">PharmacyRoute</label>
-            <select>
-              <option value="">--Select Pharmacy--</option>
-              @for(pharmacy of pharmacyList; track pharmacy.pharmacyId){
-              <option [value]="pharmacy.pharmacyId">
-                {{ pharmacy.pharmacyName }}
+            <select
+              class="form-select"
+              (change)="ChangeRoute($event)"
+              [class.is-invalid]="!isRouteSelected"
+            >
+              <option value="">--Select Route--</option>
+              @for(route of pharmacyRouteList; track route.id){
+              <option [value]="route.id">
+                {{ route.routeName }}
               </option>
               }
             </select>
-            @if(orderForm.controls.pharmacyId.errors){
-            <div class="invalid-feedback">
-              @if(orderForm.controls.pharmacyId.errors['required']){
-              <div>this field is required</div>
-              }
-            </div>
-            }
           </div>
         </div>
 

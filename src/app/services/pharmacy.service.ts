@@ -3,28 +3,32 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pharmacy } from '../models/pharmacy.model';
 
-const baseUrl = 'https://localhost:7140/api/pharmacies'
+const baseUrl = 'https://localhost:7140/api/pharmacies';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PharmacyService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http : HttpClient) { }
-
-  getAll(): Observable<Pharmacy[]>{
+  getAll(): Observable<Pharmacy[]> {
     return this.http.get<Pharmacy[]>(baseUrl);
   }
 
-  get(id : number): Observable<Pharmacy>{
-    return this.http.get<Pharmacy>(`${baseUrl}/${id}`)
+  get(id: number): Observable<Pharmacy> {
+    return this.http.get<Pharmacy>(`${baseUrl}/${id}`);
   }
-  create(data : any): Observable<any>{
-    return this.http.post(baseUrl,data)
+  create(data: any): Observable<any> {
+    return this.http.post(baseUrl, data);
   }
-  update(id : number, data : any): Observable<any>{
-    return this.http.put(`${baseUrl}/${id}`,data);
+  update(id: number, data: any): Observable<any> {
+    return this.http.put(`${baseUrl}/${id}`, data);
   }
- delete(id : number): Observable<any>{
-  return this.http.delete(`${baseUrl}/${id}`);
- }
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${baseUrl}/${id}`);
+  }
+
+  // get by pharmacy route id
+  getByPharmacyRouteId(id: number): Observable<Pharmacy[]> {
+    return this.http.get<Pharmacy[]>(baseUrl + '/GetByRoute/' + id);
+  }
 }

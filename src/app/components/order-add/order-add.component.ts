@@ -35,8 +35,10 @@ export class OrderAddComponent implements OnInit {
     pharmacyId: ['', [Validators.required]],
   });
   pharmacyList: Pharmacy[] = [];
-  pharmacyRoute: PharmacyRoute[] = [];
+  pharmacyRouteList: PharmacyRoute[] = [];
   activeRouteId: any;
+  pharmacyRouteId!: number;
+  isRouteSelected: boolean = false;
 
   constructor(
     private dialog: MatDialog,
@@ -49,9 +51,8 @@ export class OrderAddComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
   ngOnInit(): void {
+    // reset order form
     this.resetOrderForm();
-    // get all pharmacy
-    this.getAllPharmacy();
 
     // get all pharmacyRoute
     this.getAllPharmacyRoute();
@@ -74,20 +75,12 @@ export class OrderAddComponent implements OnInit {
     }
   }
 
-  // all pharmacy list retrive
-  getAllPharmacy() {
-    this.pharmacyService.getAll().subscribe({
-      next: (data) => (this.pharmacyList = data),
-      error: (e) => console.warn(e),
-    });
-  }
-
   // all pharmacyRoute list retrive
   getAllPharmacyRoute() {
     this.pharmacyRouteService.getAll().subscribe({
       next: (data) => {
         console.log(data);
-        this.pharmacyRoute = data;
+        this.pharmacyRouteList = data;
       },
       error: (e) => console.log(e),
     });
@@ -121,7 +114,34 @@ export class OrderAddComponent implements OnInit {
       }, 0),
     });
   }
-  // update due
+  // Pharmacy Route Change
+  ChangeRoute(e: any) {
+    if (e.target.selectedIndex != 0) {
+      // for validateion
+      this.isRouteSelected = true;
+
+      this.pharmacyRouteId =
+        this.pharmacyRouteList[e.target.selectedIndex - 1].id;
+
+      this.pharmacyService
+        .getByPharmacyRouteId(this.pharmacyRouteId)
+        .subscribe({
+          next: (data) => {
+            console.log(data);
+            this.pharmacyList = data;
+          },
+          error: (e) => console.log(e),
+        });
+    } else {
+      // for validateion
+      this.isRouteSelected = false;
+      this.pharmacyList = [];
+    }
+    // refresh/change pharmacyId
+    this.orderForm.patchValue({
+      pharmacyId: '',
+    });
+  }
 
   // Create Order
   createOrder() {
