@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { OrderService } from '../../services/order.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -17,7 +17,8 @@ export class OrderComponent implements OnInit {
   getUserRole: any;
   constructor(
     private orderService: OrderService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +33,10 @@ export class OrderComponent implements OnInit {
         console.log(data);
         this.allOrderList = data;
       },
-      error: (e) => console.error(e),
+      error: (e) => {
+        console.error(e);
+        this.router.navigate(['/badrequest']);
+      },
     });
   }
   // Delete order
