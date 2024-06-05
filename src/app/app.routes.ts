@@ -28,6 +28,7 @@ import { AddCategoryComponent } from './components/add-category/add-category.com
 import { OrderPendingComponent } from './components/order-pending/order-pending.component';
 import { OrderDeliveryComponent } from './components/order-delivery/order-delivery.component';
 import { OrderCompleteComponent } from './components/order-complete/order-complete.component';
+import { BadRequestComponent } from './components/bad-request/bad-request.component';
 
 export const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -77,7 +78,13 @@ export const routes: Routes = [
 
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-
+  {
+    path: 'badrequest',
+    loadComponent: () =>
+      import('./components/bad-request/bad-request.component').then(
+        (c) => c.BadRequestComponent
+      ),
+  },
   // rifat
   { path: 'List', component: ListOfProductsComponent },
   { path: 'add-products', component: AddProductsComponent },
