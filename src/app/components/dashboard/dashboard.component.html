@@ -11,52 +11,68 @@
       <h1>Order Matrix</h1>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div
         class="card text-black bg-white mb-3"
         style="border-left: 3px solid #25b003"
       >
-        <div class="card-body">
+        <div class="card-body" style="color: #25b003">
           <h2
             class="text-xs font-weight-bold text-uppercase mb-1"
-            style="color: #25b003"
+            
           >
-            total orders
+            Total Orders
           </h2>
-          <h3 class="text-xs font-weight-bold mt-3"><b>62 orders</b></h3>
+          <h3 class="text-xs font-weight-bold mt-3"><b>{{totalorder}} oders</b></h3>
         </div>
       </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div
         class="card text-black bg-white mb-3"
         style="border-left: 3px solid rgb(78, 115, 223)"
       >
-        <div class="card-body">
+        <div class="card-body" style="color: rgb(78, 115, 223)">
           <h2
             class="text-xs font-weight-bold text-uppercase mb-1"
-            style="color: rgb(78, 115, 223)"
+            
           >
-            On processing
+            Hold Aprove
           </h2>
-          <h3 class="text-xs font-weight-bold mt-3"><b>57 new orders</b></h3>
+          <h3 class="text-xs font-weight-bold mt-3"><b>{{onhold}} oders</b><div>{{onholdparcent}}%</div></h3>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div
         class="card text-black bg-white mb-3"
         style="border-left: 3px solid #f48270"
       >
-        <div class="card-body">
+        <div class="card-body" style="color: #f48270">
           <h2
             class="text-xs font-weight-bold text-uppercase mb-1"
-            style="color: #f48270; font-family: Nunito Sans"
+            style="font-family: Nunito Sans"
           >
-            On hold
+          hold Delivery
           </h2>
-          <h3 class="text-xs font-weight-bold mt-3"><b>5 orders</b></h3>
+          <h3 class="text-xs font-weight-bold mt-3"><b>{{holdDelivery}} oders</b><div>{{holdDelivery/totalProduct*100}}%</div></h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div
+        class="card text-black bg-white mb-3"
+        style="border-left: 3px solid #36b9cc"
+      >
+        <div class="card-body" style="color: #36b9cc">
+          <h2
+            class="text-xs font-weight-bold text-uppercase mb-1"
+            style="font-family: Nunito Sans"
+          >
+          Completed
+          </h2>
+          <h3 class="text-xs font-weight-bold mt-3"><b>{{deliveryCompleted}} oders</b><div>{{(deliveryCompleted/totalProduct)*100}}%</div></h3>
         </div>
       </div>
     </div>
@@ -76,7 +92,7 @@
           >
             Total products
           </h2>
-          <h3 class="text-xs font-weight-bold mt-3"><b>62 orders</b></h3>
+          <h3 class="text-xs font-weight-bold mt-3"><b>{{totalProduct}} products</b></h3>
         </div>
       </div>
     </div>
@@ -93,7 +109,7 @@
           >
             available products
           </h2>
-          <h3 class="text-xs font-weight-bold mt-3"><b>62 orders</b></h3>
+          <h3 class="text-xs font-weight-bold mt-3"><b>{{totalProduct}} products</b></h3>
         </div>
       </div>
     </div>
@@ -107,7 +123,7 @@
           <h2 class="text-xs font-weight-bold text-uppercase mb-1 text-warning">
             low stock
           </h2>
-          <h3 class="text-xs font-weight-bold mt-3"><b>57 new orders</b></h3>
+          <h3 class="text-xs font-weight-bold mt-3"><b>0 products</b></h3>
         </div>
       </div>
     </div>
@@ -123,13 +139,13 @@
           >
             out of stock
           </h2>
-          <h3 class="text-xs font-weight-bold mt-3"><b>5 orders</b></h3>
+          <h3 class="text-xs font-weight-bold mt-3"><b>0 products</b></h3>
         </div>
       </div>
     </div>
 
     <div class="col-md-12 mt-5">
-      <h1>Customer Matrix</h1>
+      <h1>Outlet Matrix</h1>
     </div>
 
     <div class="col-md-4">
@@ -142,9 +158,9 @@
             class="text-xs font-weight-bold text-uppercase mb-1"
             style="color: #36b9cc"
           >
-            Total customers
+            Total Outlet
           </h2>
-          <h3 class="text-xs font-weight-bold mt-3"><b>62 orders</b></h3>
+          <h3 class="text-xs font-weight-bold mt-3"><b>{{totalpharmacy}} outlet</b></h3>
         </div>
       </div>
     </div>
