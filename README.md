@@ -26,22 +26,36 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   •	SSMS 
    
   🛑 Project Description:
-  
-    1.First SR collected the order from Pharmacy. Then the orders go to the pending order list.
-    
-    2.After the manager approves the order from the pending order, the order is designated for delivery, and the order goes to the delivery list.
-    
-    3.After delivering the order, the delivery man marks the order as delivery complete. Then the order goes to the complete order list.
-    
-    4.Only SR can Place Order.
-    
-    5.Only Manager Can Create Product
-    
-    6.Only Manager can Approve Pending Order.
-    
-    7.Only Delivery Man Can Submit Order Successfull after delivery complete.
 
-    8. Print Invoice by Manager
+  <ul>
+    <li>
+      First SR collected the order from Pharmacy. Then the orders go to the pending order list.
+    </li>
+    <li>
+      After the manager approves the order from the pending order, the order is designated for delivery, and the order goes to the delivery list.
+    </li>
+    <li>
+      After delivering the order, the delivery man marks the order as delivery complete. Then the order goes to the complete order list.
+    </li>
+    <li>
+      Only SR can Place Order.
+    </li>
+    <li>
+      Route Based Pharmacy Show
+    </li>
+    <li>
+      Only Manager Can Create Product
+    </li>
+    <li>
+      Only Manager can Approve Pending Order.
+    </li>
+    <li>
+      Only Delivery Man Can Submit Order Successfull after delivery complete.
+    </li>
+    <li>
+      Print Invoice by Manager
+    </li>
+  </ul>
 Order Now:
 ![order-add](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/dd4a535b-7eca-4e3d-a14d-9ab947f0585d)
 Order Items:
