@@ -15,6 +15,7 @@
   </li>
 </ul>
 <b>NOTE</b>: Please Start API Server before angular application open for test application  
+
 🔷🔶GitHub API Link: https://github.com/mehedimd/SalesManagementFinalWebApi
 
 # Project Details
