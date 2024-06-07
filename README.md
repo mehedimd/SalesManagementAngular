@@ -105,6 +105,20 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## Installation
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<ul>
+  <li>
+    git clone https://github.com/mehedimd/SalesManagementAngular.git
+  </li>
+  <li>
+    cd SalesManagementAngular
+  </li>
+  <li>
+    npm install
+  </li>
+  <li>
+    ng serve -o
+  </li>
+</ul>
+<b>NOTE</b>: Please Start API Server before angular application open for test application
