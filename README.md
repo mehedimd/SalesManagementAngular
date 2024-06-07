@@ -14,12 +14,12 @@
     ng serve -o
   </li>
 </ul>
-<b>NOTE</b>: Please Start API Server before angular application open for test application
+<b>NOTE</b>: Please Start API Server before angular application open for test application  
+🔷🔶GitHub API Link: https://github.com/mehedimd/SalesManagementFinalWebApi
 
 # Project Details
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
 
-🔷🔶GitHub API Link: https://github.com/mehedimd/SalesManagementFinalWebApi
 
 🔴🔴	Pharmaceutical Company’s Order Management System🔴🔴
 
