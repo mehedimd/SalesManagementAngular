@@ -1,23 +1,3 @@
-## Installation
-### run this command on cmd / vs code powershell / git bash
-<ul>
-  <li>
-    git clone https://github.com/mehedimd/SalesManagementAngular.git
-  </li>
-  <li>
-    cd SalesManagementAngular
-  </li>
-  <li>
-    npm install
-  </li>
-  <li>
-    ng serve -o
-  </li>
-</ul>
-<b>NOTE</b>: Please Start API Server before angular application open for test application  
-
-🔷🔶GitHub API Link: https://github.com/mehedimd/SalesManagementFinalWebApi
-
 # Project Details
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
 
@@ -40,6 +20,27 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   •	Visual Studio Code
   •	Visual Studio 2022
   •	SSMS 
+
+  ## Installation
+### run this command on cmd / vs code powershell / git bash
+<ul>
+  <li>
+    git clone https://github.com/mehedimd/SalesManagementAngular.git
+  </li>
+  <li>
+    cd SalesManagementAngular
+  </li>
+  <li>
+    npm install
+  </li>
+  <li>
+    ng serve -o
+  </li>
+</ul>
+<b>NOTE</b>: Please Start API Server before angular application open for test application  
+
+🔷🔶GitHub API Link: https://github.com/mehedimd/SalesManagementFinalWebApi
+
    
   🛑 Project Description:
 
