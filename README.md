@@ -56,7 +56,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
       Print Invoice by Manager
     </li>
   </ul>
+  
 Order Now:
+
 ![order-add](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/dd4a535b-7eca-4e3d-a14d-9ab947f0585d)
 Order Items:
 ![order-item 2](https://github.com/mehedimd/SalesManagementAngular/assets/77402616/fb899e18-9565-486c-8714-7ca981bbcf3a)
