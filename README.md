@@ -3,15 +3,15 @@
 
 🔴🔴	Pharmaceutical Company’s Order Management System🔴🔴
 
-  🛑 Technology Use:  
-  •	Angular 17, Angular Material
-  •	ASP.NET Core Web API
-  •	Unit of Work with Repository Pattern
-  •	HTML, CSS, Bootstrap 5
-  •	Authentication using Asp.net Core Identity & JWT Token
-  •	CORS Origin, Scoped
-  •	SOLID Principle
-  •	MS SQL Server
+  🛑 Technology Use:   
+  •	Angular 17, Angular Material  
+  •	ASP.NET Core 6 Web API  
+  •	Unit of Work with Repository Pattern  
+  •	HTML5, CSS3, Bootstrap 5  
+  •	Authentication using Asp.net Core Identity & JWT Token  
+  •	CORS Origin, Scoped  
+  •	SOLID Principle  
+  •	MS SQL Server 2019
    
   
   🛑 IDE Use: 
