@@ -1,3 +1,20 @@
+## Installation
+### runn this command on cmd / vs code powershell / git bash
+<ul>
+  <li>
+    git clone https://github.com/mehedimd/SalesManagementAngular.git
+  </li>
+  <li>
+    cd SalesManagementAngular
+  </li>
+  <li>
+    npm install
+  </li>
+  <li>
+    ng serve -o
+  </li>
+</ul>
+<b>NOTE</b>: Please Start API Server before angular application open for test application
 
 # Project Details
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
@@ -87,21 +104,4 @@ Click Print Button then show print option
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Installation
-### runn this command on cmd / vs code powershell / git bash
-<ul>
-  <li>
-    git clone https://github.com/mehedimd/SalesManagementAngular.git
-  </li>
-  <li>
-    cd SalesManagementAngular
-  </li>
-  <li>
-    npm install
-  </li>
-  <li>
-    ng serve -o
-  </li>
-</ul>
-<b>NOTE</b>: Please Start API Server before angular application open for test application
 
