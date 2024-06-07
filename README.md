@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 🔴🔴	Pharmaceutical Company’s Order Management System🔴🔴
 
-  🛑 ## Technology Use:   
+   ## Technology Use:   
   •	Angular 17, Angular Material  
   •	ASP.NET Core 6 Web API  
   •	Unit of Work with Repository Pattern  
@@ -15,7 +15,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   •	MS SQL Server 2019
    
   
-  🛑 ## IDE Use: 
+  ## IDE Use: 
    
   •	Visual Studio Code
   •	Visual Studio 2022
@@ -42,7 +42,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 🔷🔶GitHub API Link: https://github.com/mehedimd/SalesManagementFinalWebApi
 
    
-  🛑 ## Project Description:
+  ## Project Description:
 
   <ul>
     <li>
