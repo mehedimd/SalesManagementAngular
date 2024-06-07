@@ -1,3 +1,8 @@
+
+# MyPharmacy
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
+
 # Project Details
 🔷🔶GitHub API Link: https://github.com/mehedimd/SalesManagementFinalWebApi
 
@@ -63,9 +68,6 @@ Click Print Button then show print option
   
   GitHub API Link: https://github.com/mehedimd/SalesManagementFinalWebApi
 
-# MyPharmacy
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
 
 ## Development server
 
