@@ -1,5 +1,5 @@
 ## Installation
-### runn this command on cmd / vs code powershell / git bash
+### run this command on cmd / vs code powershell / git bash
 <ul>
   <li>
     git clone https://github.com/mehedimd/SalesManagementAngular.git
