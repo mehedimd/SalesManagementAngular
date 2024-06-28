@@ -66,12 +66,32 @@ export const routes: Routes = [
   {
     path: 'order',
     children: [
-      { path: '', component: OrderComponent },
-      { path: 'add', component: OrderAddComponent },
-      { path: 'add/:id', component: OrderAddComponent },
-      { path: 'pending-order', component: OrderPendingComponent },
-      { path: 'pending-delivery', component: OrderDeliveryComponent },
-      { path: 'order-completed', component: OrderCompleteComponent },
+      { path: '', component: OrderComponent, canActivate: [authGuard] },
+      {
+        path: 'add',
+        component: OrderAddComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'add/:id',
+        component: OrderAddComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'pending-order',
+        component: OrderPendingComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'pending-delivery',
+        component: OrderDeliveryComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'order-completed',
+        component: OrderCompleteComponent,
+        canActivate: [authGuard],
+      },
     ],
     canActivate: [authGuard],
   },

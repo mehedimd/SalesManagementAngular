@@ -33,7 +33,7 @@ export class LoginComponent {
         console.log(res);
         localStorage.setItem('jwtToken', res.token);
         localStorage.setItem('role', res.role);
-        localStorage.setItem('user', res.applicationUser.userName);
+        localStorage.setItem('refreshToken', res.refreshToken);
         window.location.reload();
         this.router.navigate(['/']);
       },
