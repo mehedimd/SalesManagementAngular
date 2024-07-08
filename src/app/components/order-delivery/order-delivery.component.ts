@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../services/order.service';
 import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-order-delivery',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './order-delivery.component.html',
   styleUrl: './order-delivery.component.css',
 })

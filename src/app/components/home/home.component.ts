@@ -3,7 +3,6 @@ import { MatCardModule } from '@angular/material/card';
 import { HomeComponentRifat } from '../homeRifat/home.component';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
-
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -36,7 +35,7 @@ export class HomeComponent implements OnInit {
   logout() {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('role');
-    localStorage.removeItem('user');
+    localStorage.removeItem('refreshToken');
     this.router.navigate(['/']);
     this.ngOnInit();
   }

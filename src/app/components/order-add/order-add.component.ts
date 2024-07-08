@@ -33,6 +33,7 @@ export class OrderAddComponent implements OnInit {
     orderDate: [new Date().toISOString().slice(0, 10)],
     grandTotal: [0],
     pharmacyId: ['', [Validators.required]],
+    routeId: [''],
   });
   pharmacyList: Pharmacy[] = [];
   pharmacyRouteList: PharmacyRoute[] = [];
@@ -67,6 +68,7 @@ export class OrderAddComponent implements OnInit {
       this.orderService.getOrderById(this.activeRouteId).subscribe({
         next: (res) => {
           console.log(res);
+          this.getPharmacyByRouteId(res.order.routeId);
           this.orderForm.patchValue(res.order);
           this.orderService.orderItems = res.orderItems;
         },
@@ -117,21 +119,9 @@ export class OrderAddComponent implements OnInit {
   // Pharmacy Route Change
   ChangeRoute(e: any) {
     if (e.target.selectedIndex != 0) {
-      // for validateion
-      this.isRouteSelected = true;
-
       this.pharmacyRouteId =
         this.pharmacyRouteList[e.target.selectedIndex - 1].id;
-
-      this.pharmacyService
-        .getByPharmacyRouteId(this.pharmacyRouteId)
-        .subscribe({
-          next: (data) => {
-            console.log(data);
-            this.pharmacyList = data;
-          },
-          error: (e) => console.log(e),
-        });
+      this.getPharmacyByRouteId(this.pharmacyRouteId);
     } else {
       // for validateion
       this.isRouteSelected = false;
@@ -140,6 +130,19 @@ export class OrderAddComponent implements OnInit {
     // refresh/change pharmacyId
     this.orderForm.patchValue({
       pharmacyId: '',
+    });
+  }
+
+  // get Pharmacy by Route Id
+  getPharmacyByRouteId(routeId: number) {
+    // for validateion
+    this.isRouteSelected = true;
+    this.pharmacyService.getPharmacyByRouteId(routeId).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.pharmacyList = data;
+      },
+      error: (e) => console.log(e),
     });
   }
 
