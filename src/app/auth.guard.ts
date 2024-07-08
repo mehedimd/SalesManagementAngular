@@ -11,13 +11,12 @@ export const authGuard: CanActivateFn = async (route, state) => {
 
   const jwt = localStorage.getItem('jwtToken');
   if (jwt != null && !jwtHelper.isTokenExpired(jwt)) {
-    console.log('rout gurd true');
+    console.log('route gurd true');
     console.log(jwtHelper.isTokenExpired(jwt) + ' (token not expired )');
     return true;
   }
   const isRefreshSuccess = await tryRefreshingTokens(jwt);
   if (!isRefreshSuccess) {
-    alert('isRefresh False');
     console.log('rout gurd false');
     router.navigate(['/login']);
   }
