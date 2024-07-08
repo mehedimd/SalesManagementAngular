@@ -3,11 +3,12 @@ import { OrderService } from '../../services/order.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgxPrintService } from 'ngx-print';
 import { PrintOptions } from 'ngx-print';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-order-pending',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './order-pending.component.html',
   styleUrl: './order-pending.component.css',
 })

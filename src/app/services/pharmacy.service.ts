@@ -28,7 +28,7 @@ export class PharmacyService {
   }
 
   // get by pharmacy route id
-  getByPharmacyRouteId(id: number): Observable<Pharmacy[]> {
+  getPharmacyByRouteId(id: number): Observable<Pharmacy[]> {
     return this.http.get<Pharmacy[]>(baseUrl + '/GetByRoute/' + id);
   }
 }

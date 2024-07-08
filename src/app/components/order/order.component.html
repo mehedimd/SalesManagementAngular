@@ -37,7 +37,8 @@
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
             >
-              {{ item.orderDate.slice(0, 10) }}
+              <!-- {{ item.orderDate.slice(0, 10) }} -->
+                {{item.orderDate | date }}
             </td>
             <td
               (click)="orderDetails(item.orderId)"

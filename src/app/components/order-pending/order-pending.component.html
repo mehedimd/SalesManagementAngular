@@ -30,7 +30,8 @@
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
             >
-              {{ item.orderDate.slice(0, 10) }}
+              <!-- {{ item.orderDate.slice(0, 10) }} -->
+                {{ item.orderDate | date}}
             </td>
             <td
               (click)="orderDetails(item.orderId)"
@@ -153,7 +154,7 @@
           <div style="width: 40%">
             <span>Order No: {{ order.orderNo }}</span
             ><br />
-            <span>Order Date: {{ order.orderDate }}</span>
+            <span>Order Date: {{ order.orderDate | date }}</span>
           </div>
         </div>
         <hr />

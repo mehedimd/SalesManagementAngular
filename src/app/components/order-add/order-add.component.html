@@ -26,6 +26,7 @@
               class="form-select"
               (change)="ChangeRoute($event)"
               [class.is-invalid]="!isRouteSelected"
+              formControlName = "routeId"
             >
               <option value="">--Select Route--</option>
               @for(route of pharmacyRouteList; track route.id){
