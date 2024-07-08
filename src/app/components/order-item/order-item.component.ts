@@ -55,6 +55,8 @@ export class OrderItemComponent implements OnInit {
       this.orderItemForm.patchValue(
         this.orderService.orderItems[this.data.itemIndex]
       );
+      this.getAllStock(this.orderItemForm.value.productId);
+      console.log(this.orderItemForm.value.productId);
     }
   }
 
