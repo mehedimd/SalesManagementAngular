@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../services/order.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-order-complete',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './order-complete.component.html',
   styleUrl: './order-complete.component.css',
 })
