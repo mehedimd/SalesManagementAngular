@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../services/order.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-complete',
@@ -25,7 +26,9 @@ export class OrderCompleteComponent implements OnInit {
         console.log(data);
         this.allOrderList = data;
       },
-      error: (e) => console.error(e),
+      error: (e) => {
+        console.error(e);
+      },
     });
   }
 

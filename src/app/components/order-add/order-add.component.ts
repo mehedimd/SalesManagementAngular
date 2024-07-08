@@ -103,9 +103,9 @@ export class OrderAddComponent implements OnInit {
       });
   }
   // remove orderItems in orderList
-  removeItems(id: any) {
-    console.log(id);
-    this.orderService.orderItems.splice(id, 1);
+  removeItems(index: any) {
+    console.log(index);
+    this.orderService.orderItems.splice(index, 1);
     this.updateGrandTotal();
   }
   // update Grand Total
