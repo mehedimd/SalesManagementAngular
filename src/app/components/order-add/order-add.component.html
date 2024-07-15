@@ -26,7 +26,7 @@
               class="form-select"
               (change)="ChangeRoute($event)"
               [class.is-invalid]="!isRouteSelected"
-              formControlName = "routeId"
+              formControlName="routeId"
             >
               <option value="">--Select Route--</option>
               @for(route of pharmacyRouteList; track route.id){
@@ -136,7 +136,11 @@
           >
             Submit
           </button>
-          <button class="btn btn-success ms-2" routerLink="/order">
+          <button
+            type="button"
+            class="btn btn-success ms-2"
+            routerLink="/order"
+          >
             BACK TO LIST
           </button>
         </div>
