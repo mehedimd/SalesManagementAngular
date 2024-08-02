@@ -39,7 +39,6 @@ export class LoginComponent {
         this.router.navigate(['/']);
       },
       error: (e) => {
-        this.router.navigate(['/badrequest']);
         this.finalError = e.error.error;
       },
     });
