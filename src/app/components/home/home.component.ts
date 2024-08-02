@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     console.log('home component called');
 
-    this.user = localStorage.getItem('user');
+    this.user = localStorage.getItem('logInUser');
     this.role = localStorage.getItem('role');
   }
 
