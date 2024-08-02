@@ -34,11 +34,11 @@ export class LoginComponent {
         localStorage.setItem('jwtToken', res.token);
         localStorage.setItem('role', res.role);
         localStorage.setItem('refreshToken', res.refreshToken);
+        localStorage.setItem('logInUser', res.applicationUser.userName);
         window.location.reload();
         this.router.navigate(['/']);
       },
       error: (e) => {
-        this.router.navigate(['/badrequest']);
         this.finalError = e.error.error;
       },
     });
